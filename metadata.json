@@ -1,0 +1,6 @@
+{
+  "name": "FireMonk LLP - Management Systems Consulting",
+  "description": "Corporate platform for FireMonk LLP providing management system consulting, auditing, and training for ISO standards with lead generation, custom quotes, and express booking.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

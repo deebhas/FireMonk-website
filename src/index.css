@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Fira Sans', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Fira Sans', 'Plus Jakarta Sans', sans-serif;
+    letter-spacing: -0.015em;
+  }
+}
+
+.font-fira {
+  font-family: 'Fira Sans', sans-serif;
+}
+
+.font-zilla {
+  font-family: 'Zilla Slab', serif;
+}
+
+.font-orbitron {
+  font-family: 'Orbitron', sans-serif;
+}
+
+.ff-gradient-text {
+  background: linear-gradient(135deg, #0060df 0%, #0080ff 30%, #ff5500 75%, #ff8800 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.ff-gradient-text-light {
+  background: linear-gradient(135deg, #38bdf8 0%, #60a5fa 35%, #ff7700 75%, #ffd600 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.ff-gradient-bg {
+  background: linear-gradient(135deg, #0a1026 0%, #1e1b4b 50%, #111827 100%);
+}
+
+.ff-gradient-card {
+  background: linear-gradient(135deg, rgba(0, 96, 223, 0.05) 0%, rgba(255, 85, 0, 0.05) 100%);
+}

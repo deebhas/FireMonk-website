@@ -1,0 +1,125 @@
+import { IndustryItem } from '../types';
+
+export const INDUSTRIES_DATA: IndustryItem[] = [
+  {
+    id: 'High-Tech & Software',
+    title: 'High-Tech & Software Enterprise',
+    iconName: 'Cpu',
+    description: 'Tailored compliance, cyber security, privacy, and AI governance solutions for tech companies, SaaS platforms, and cloud infrastructure leaders.',
+    subSectors: [
+      'IT & ITEs Export Hubs',
+      'AI & Machine Learning Startups',
+      'Data Centers & Co-location Facilities',
+      'Cloud Infrastructure Providers',
+      'Fintech & Digital Banking Platforms',
+    ],
+    recommendedStandards: [
+      'ISO/IEC 27001:2022 (ISMS)',
+      'ISO/IEC 27701:2019 (PIMS / Privacy)',
+      'ISO/IEC 42001:2023 (AI Governance)',
+      'ISO/IEC 20000-1:2018 (ITSM)',
+      'ISO 22301:2019 (Business Continuity)',
+      'CMMI V2.0 / V3.0 Development',
+    ],
+    keyChallenges: [
+      'Customer vendor security questionnaires demanding ISO 27001 / SOC 2 proofs.',
+      'Ethical AI, model bias, and data governance in new AI product deployments.',
+      'Cross-border data privacy rules (GDPR, India DPDP Act, US state privacy laws).',
+      'Minimizing unplanned downtime and satisfying tight client SLAs.',
+    ],
+    benefits: [
+      'Accelerate sales cycles with pre-verified security and privacy credentials.',
+      'Mitigate ransomware, data breaches, and regulatory non-compliance fines.',
+      'Demonstrate ethical AI deployment to enterprise investors and global buyers.',
+    ],
+  },
+  {
+    id: 'Life Sciences & Healthcare',
+    title: 'Life Sciences, Pharma & Healthcare',
+    iconName: 'Activity',
+    description: 'High-precision quality, computer validation, and medical device regulatory readiness for global life science leaders.',
+    subSectors: [
+      'Pharmaceutical Manufacturing Units',
+      'Medical Device Manufacturers & Importers',
+      'Biotech & Clinical Research Labs (CROs)',
+      'Hospitals, Diagnostic Networks & Telehealth',
+    ],
+    recommendedStandards: [
+      'ISO 13485:2016 (Medical Devices QMS)',
+      'Computer System Validation (CSV / GAMP 5)',
+      'FDA 21 CFR Part 11 (Electronic Records & Signatures)',
+      'ISO 9001:2015 (Quality Management System)',
+      'ISO 27001:2022 (Health Data Cyber Security)',
+    ],
+    keyChallenges: [
+      'Navigating complex FDA, CDSCO, and EU MDR regulatory audits.',
+      'Maintaining tamper-proof electronic audit trails and electronic signature compliance.',
+      'Strict cleanroom contamination, process validation, and device risk documentation.',
+      'HIPAA and patient data privacy protection in diagnostic networks.',
+    ],
+    benefits: [
+      'Rapid market entry for medical devices across US, EU, and Asian markets.',
+      'Zero-defect software validation for ERP, LIMS, and clinical platforms.',
+      'A robust Audit Trail posture to pass unannounced regulatory inspections.',
+    ],
+  },
+  {
+    id: 'Heavy Industry & Manufacturing',
+    title: 'Heavy Industry & Advanced Manufacturing',
+    iconName: 'Factory',
+    description: 'Integrated QMS, EMS, OH&S, automotive core tools, and aerospace quality standards for industrial plants.',
+    subSectors: [
+      'Aerospace & Defense Component Tier-1s',
+      'Automotive & Ancillary Manufacturers',
+      'Electronics & Semiconductor Assembly',
+      'Chemicals & Heavy Process Operations',
+    ],
+    recommendedStandards: [
+      'IATF 16949:2016 (Automotive QMS & Core Tools)',
+      'AS9100 Rev D (Aerospace & Defense)',
+      'ISO 9001:2015 (Quality Management)',
+      'ISO 14001:2015 (Environmental Management)',
+      'ISO 45001:2018 (Occupational Health & Safety)',
+    ],
+    keyChallenges: [
+      'Meeting zero-defect expectations of automotive OEMs (Tier-1/Tier-2 supply chains).',
+      'Mitigating workplace safety hazards, heavy machinery incidents, and environmental fines.',
+      'Managing complex PPAP, FMEA, First Article Inspections (AS9102), and supplier audits.',
+    ],
+    benefits: [
+      'Unlock vendor qualification with global automotive and defense contractors.',
+      'Dramatically cut scrap rates, customer rejections, and warranty claims.',
+      'Establish a resilient health & safety culture that lowers insurance premiums.',
+    ],
+  },
+  {
+    id: 'Corporate & Infrastructure',
+    title: 'Corporate, Infrastructure & BFSI',
+    iconName: 'Building2',
+    description: 'Enterprise governance, business continuity, educational quality, and ESG sustainability compliance for institutional organizations.',
+    subSectors: [
+      'Logistics, Warehousing & Supply Chain',
+      'Construction & Infrastructure Developers',
+      'Corporate Enterprises & Holding Groups',
+      'Banking, Financial Services & Insurance (BFSI)',
+      'Educational Institutions & Training Academies',
+    ],
+    recommendedStandards: [
+      'ISO 9001:2015 (Corporate QMS)',
+      'ISO 22301:2019 (Business Continuity)',
+      'ISO 31000:2018 (Enterprise Risk Training)',
+      'ISO 21001:2018 (Educational Organizations Management System)',
+      'ESG & BRSR Sustainability Reporting',
+    ],
+    keyChallenges: [
+      'Ensuring operational continuity during regional disasters or cyber outages.',
+      'Meeting mandatory SEBI BRSR and international investor ESG expectations.',
+      'Standardizing service delivery across multi-location branch networks.',
+    ],
+    benefits: [
+      'Strengthen enterprise risk management and board-level governance.',
+      'Publish credible, audit-ready ESG and BRSR sustainability reports.',
+      'Enhance institutional reputation and gain accreditation competitive edge.',
+    ],
+  },
+];
