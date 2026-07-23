@@ -12,6 +12,7 @@ import { ExpressBookingModal } from './components/ExpressBookingModal';
 import { CustomQuoteEngine } from './components/CustomQuoteEngine';
 import { LeadsPortalModal } from './components/LeadsPortalModal';
 import { SeoMetaModal } from './components/SeoMetaModal';
+import { StaffPortalModal } from './components/StaffPortalModal';
 
 export default function App() {
   const [currentView, setCurrentView] = useState<string>('home');
@@ -20,6 +21,7 @@ export default function App() {
   const [isExpressBookingOpen, setIsExpressBookingOpen] = useState(false);
   const [isLeadsPortalOpen, setIsLeadsPortalOpen] = useState(false);
   const [isSeoMetaOpen, setIsSeoMetaOpen] = useState(false);
+  const [isStaffPortalOpen, setIsStaffPortalOpen] = useState(false);
 
   // Prefill parameters for quote engine
   const [prefillStandard, setPrefillStandard] = useState<string>('');
@@ -69,9 +71,7 @@ export default function App() {
         setCurrentView={setCurrentView}
         onOpenExpressBooking={() => setIsExpressBookingOpen(true)}
         onOpenCustomQuote={() => handleOpenCustomQuoteWithStandard()}
-        onOpenLeadsPortal={() => setIsLeadsPortalOpen(true)}
-        onOpenSeoMeta={() => setIsSeoMetaOpen(true)}
-        leadCount={submissions.length}
+        onOpenStaffPortal={() => setIsStaffPortalOpen(true)}
       />
 
       {/* Main View Router Content */}
@@ -99,7 +99,7 @@ export default function App() {
             />
 
             {/* Interactive Readiness Self-Assessment Quiz */}
-            <div className="py-16 bg-slate-900">
+            <div id="readiness-quiz-section" className="py-16 bg-slate-900">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <ReadinessQuiz
                   onOpenCustomQuote={handleOpenCustomQuoteWithStandard}
@@ -189,7 +189,7 @@ export default function App() {
         setCurrentView={setCurrentView}
         onOpenExpressBooking={() => setIsExpressBookingOpen(true)}
         onOpenCustomQuote={() => handleOpenCustomQuoteWithStandard()}
-        onOpenSeoMeta={() => setIsSeoMetaOpen(true)}
+        onOpenStaffPortal={() => setIsStaffPortalOpen(true)}
       />
 
       {/* Action Pathway A: Express Booking Modal */}
@@ -197,6 +197,15 @@ export default function App() {
         isOpen={isExpressBookingOpen}
         onClose={() => setIsExpressBookingOpen(false)}
         onAddSubmission={handleAddSubmission}
+      />
+
+      {/* Internal Staff & Admin Gateway */}
+      <StaffPortalModal
+        isOpen={isStaffPortalOpen}
+        onClose={() => setIsStaffPortalOpen(false)}
+        onOpenLeads={() => setIsLeadsPortalOpen(true)}
+        onOpenSeo={() => setIsSeoMetaOpen(true)}
+        leadCount={submissions.length}
       />
 
       {/* Internal Lead Management Portal */}

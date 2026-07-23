@@ -11,8 +11,9 @@ import {
   X, 
   Sparkles,
   ShieldAlert,
-  Code,
-  Globe
+  Lock,
+  Globe,
+  CheckCircle2
 } from 'lucide-react';
 
 interface NavbarProps {
@@ -20,9 +21,7 @@ interface NavbarProps {
   setCurrentView: (view: string) => void;
   onOpenExpressBooking: () => void;
   onOpenCustomQuote: () => void;
-  onOpenLeadsPortal: () => void;
-  onOpenSeoMeta: () => void;
-  leadCount: number;
+  onOpenStaffPortal: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -30,9 +29,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   setCurrentView,
   onOpenExpressBooking,
   onOpenCustomQuote,
-  onOpenLeadsPortal,
-  onOpenSeoMeta,
-  leadCount
+  onOpenStaffPortal
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -48,6 +45,19 @@ export const Navbar: React.FC<NavbarProps> = ({
   const handleNavClick = (id: string) => {
     setCurrentView(id);
     setMobileMenuOpen(false);
+  };
+
+  const handleReadinessClick = () => {
+    setCurrentView('home');
+    setMobileMenuOpen(false);
+    setTimeout(() => {
+      const quizElement = document.getElementById('readiness-quiz-section');
+      if (quizElement) {
+        quizElement.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        window.scrollTo({ top: 1200, behavior: 'smooth' });
+      }
+    }, 100);
   };
 
   return (
@@ -68,31 +78,36 @@ export const Navbar: React.FC<NavbarProps> = ({
             <span className="hidden md:inline-block text-slate-600">•</span>
             <span className="hidden md:inline-flex items-center gap-1 text-sky-300 font-medium text-[11px] bg-blue-950/80 px-2 py-0.5 rounded border border-blue-800/60">
               <Globe className="w-3 h-3 text-sky-400" />
-              <span>Enterprise Advisory Practice</span>
+              <span>Enterprise ISO Advisory Practice</span>
             </span>
           </div>
 
           <div className="flex items-center gap-3">
             <button
-              onClick={onOpenSeoMeta}
-              className="text-slate-300 hover:text-sky-300 transition-colors flex items-center gap-1 text-[11px] bg-slate-800 px-2 py-0.5 rounded border border-slate-700"
-              title="Inspect Open Graph & JSON-LD Structured Data"
+              onClick={handleReadinessClick}
+              className="text-amber-300 hover:text-amber-200 transition-colors flex items-center gap-1.5 text-[11px] bg-amber-950/60 hover:bg-amber-900/80 px-2.5 py-0.5 rounded border border-amber-800/80 font-bold"
+              title="Assess your organization's ISO audit readiness"
             >
-              <Code className="w-3 h-3 text-sky-400" />
-              <span>Technical SEO & Meta</span>
+              <Sparkles className="w-3 h-3 text-amber-400" />
+              <span>ISO Gap Assessment</span>
             </button>
 
             <button
-              onClick={onOpenLeadsPortal}
-              className="relative text-slate-200 hover:text-white transition-colors flex items-center gap-1 text-[11px] bg-blue-900 px-2.5 py-0.5 rounded border border-blue-700 font-medium"
-              title="View Client Submissions & Scheduled Bookings"
+              onClick={onOpenExpressBooking}
+              className="text-slate-200 hover:text-white transition-colors flex items-center gap-1 text-[11px] bg-blue-900 hover:bg-blue-800 px-2.5 py-0.5 rounded border border-blue-700 font-medium"
+              title="Schedule immediate advisory session"
             >
-              <span>Leads Admin</span>
-              {leadCount > 0 && (
-                <span className="bg-orange-500 text-white font-bold px-1.5 py-0.2 rounded-full text-[10px] ml-1">
-                  {leadCount}
-                </span>
-              )}
+              <CheckCircle2 className="w-3 h-3 text-emerald-400" />
+              <span>Fast Advisory</span>
+            </button>
+
+            {/* Subtle Staff Access Lock Icon */}
+            <button
+              onClick={onOpenStaffPortal}
+              className="text-slate-400 hover:text-slate-200 p-1 rounded hover:bg-slate-800 transition-colors"
+              title="FireMonk Staff Portal"
+            >
+              <Lock className="w-3.5 h-3.5" />
             </button>
           </div>
         </div>

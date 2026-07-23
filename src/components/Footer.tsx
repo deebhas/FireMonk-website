@@ -9,21 +9,22 @@ import {
   ShieldCheck, 
   FileCheck2, 
   Award,
-  ArrowRight
+  ArrowRight,
+  Lock
 } from 'lucide-react';
 
 interface FooterProps {
   setCurrentView: (view: string) => void;
   onOpenExpressBooking: () => void;
   onOpenCustomQuote: () => void;
-  onOpenSeoMeta: () => void;
+  onOpenStaffPortal: () => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({
   setCurrentView,
   onOpenExpressBooking,
   onOpenCustomQuote,
-  onOpenSeoMeta
+  onOpenStaffPortal
 }) => {
   return (
     <footer className="bg-slate-900 text-slate-300 border-t border-slate-800/80 pt-16 pb-12">
@@ -176,12 +177,9 @@ export const Footer: React.FC<FooterProps> = ({
               </div>
             </div>
 
-            <button
-              onClick={onOpenSeoMeta}
-              className="w-full text-center text-xs text-sky-400 hover:text-sky-300 underline font-sans flex items-center justify-center gap-1 py-1"
-            >
-              <span>Inspect Technical SEO & Metadata</span>
-            </button>
+            <div className="text-center text-[11px] text-slate-500 py-1 font-mono">
+              <span>ISO 9001 • ISO 27001 • ISO 42001 Practice</span>
+            </div>
           </div>
 
         </div>
@@ -198,8 +196,9 @@ export const Footer: React.FC<FooterProps> = ({
               Request Corporate Quote
             </button>
             <span>•</span>
-            <button onClick={onOpenSeoMeta} className="hover:text-sky-400">
-              Technical SEO Schema
+            <button onClick={onOpenStaffPortal} className="hover:text-slate-200 text-slate-500 flex items-center gap-1 transition-colors">
+              <Lock className="w-3 h-3" />
+              <span>Staff Portal</span>
             </button>
           </div>
         </div>
