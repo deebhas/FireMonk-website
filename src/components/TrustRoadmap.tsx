@@ -37,7 +37,7 @@ export const TrustRoadmap: React.FC<TrustRoadmapProps> = ({
         'Executive Leadership Debrief & Roadmap Charter',
         'Resource & Effort Estimate'
       ],
-      description: 'Our lead auditors conduct a thorough diagnostic evaluation of your existing SOPs, workflows, and infrastructure against the target ISO standard. We pinpoint existing strengths, document operational gaps, and establish a clear implementation baseline.'
+      description: 'Our lead auditors conduct a thorough evaluation of your existing SOPs, workflows, and infrastructure against the target ISO standard. We pinpoint existing strengths, document operational gaps, and establish a clear implementation baseline.'
     },
     {
       stepNumber: '02',
@@ -69,7 +69,7 @@ export const TrustRoadmap: React.FC<TrustRoadmapProps> = ({
     },
     {
       stepNumber: '04',
-      title: 'Accredited Certification Audit Support',
+      title: 'Audit Support',
       subtitle: 'Providing expert handholding during external accredited CB audits',
       icon: Award,
       duration: 'Ongoing Support',
@@ -98,7 +98,7 @@ export const TrustRoadmap: React.FC<TrustRoadmapProps> = ({
             The 4-Step Strategic Trust Roadmap
           </h2>
           <p className="text-slate-600 text-base leading-relaxed">
-            From initial diagnostic review to final accredited certification audit support, FireMonk delivers end-to-end guidance every step of the way.
+            From initial review to final audit support, FireMonk delivers end-to-end guidance every step of the way.
           </p>
         </div>
 

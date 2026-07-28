@@ -14,7 +14,7 @@ export const STANDARDS_DATA: StandardItem[] = [
     keyClauses: ['Context of Organization', 'Leadership & Commitment', 'Risk & Opportunity Planning', 'Operational Controls', 'Performance Evaluation'],
     deliverables: ['Quality Manual & Policies', 'Standard Operating Procedures (SOPs)', 'Process Flow Diagrams', 'Internal Audit Reports', 'Management Review Minutes'],
     targetAudience: ['All industries', 'Manufacturing', 'Services', 'Government & Public Sector'],
-    recommendedIndustries: ['High-Tech & Software', 'Life Sciences & Healthcare', 'Heavy Industry & Manufacturing', 'Corporate & Infrastructure'],
+    recommendedIndustries: ['Tech & Software', 'Life Sciences & Healthcare', 'Heavy Industry & Manufacturing', 'Corporate & Infrastructure'],
     popular: true,
   },
   {
@@ -61,7 +61,7 @@ export const STANDARDS_DATA: StandardItem[] = [
     keyClauses: ['Information Security Risk Assessment', 'Statement of Applicability (SoA)', 'Annex A Controls (93 Controls)', 'Access Control & Encryption', 'Incident Management'],
     deliverables: ['ISMS Policies & Procedures', 'Risk Treatment Plan', 'Statement of Applicability (SoA)', 'Vulnerability Assessment Framework', 'Internal ISMS Audit Report'],
     targetAudience: ['SaaS & Software Companies', 'Fintech & Banking', 'Cloud & Managed Service Providers', 'Data Centers'],
-    recommendedIndustries: ['High-Tech & Software', 'Corporate & Infrastructure'],
+    recommendedIndustries: ['Tech & Software', 'Corporate & Infrastructure'],
     popular: true,
   },
   {
@@ -76,7 +76,7 @@ export const STANDARDS_DATA: StandardItem[] = [
     keyClauses: ['PII Controller Controls', 'PII Processor Controls', 'Privacy Impact Assessments (PIA)', 'Data Subject Rights Handling', 'Third-Party Privacy Oversight'],
     deliverables: ['Privacy Policy & Consent Framework', 'PII Inventory & Data Flow Map', 'Privacy Impact Assessment Reports', 'Data Breach Incident Plan'],
     targetAudience: ['Data Processors', 'E-commerce', 'Fintech', 'Healthcare Tech', 'Global SaaS'],
-    recommendedIndustries: ['High-Tech & Software', 'Life Sciences & Healthcare'],
+    recommendedIndustries: ['Tech & Software', 'Life Sciences & Healthcare'],
     popular: false,
   },
   {
@@ -91,7 +91,7 @@ export const STANDARDS_DATA: StandardItem[] = [
     keyClauses: ['Service Planning & Portfolio', 'SLA & Capacity Management', 'Incident & Problem Resolution', 'Configuration & Change Control', 'Supplier Management'],
     deliverables: ['Service Catalog', 'SLA Framework & Escalation Matrix', 'Change Management Workflow', 'ITSM Performance Metrics'],
     targetAudience: ['Managed Service Providers (MSPs)', 'Internal IT Departments', 'Cloud Infrastructure Providers'],
-    recommendedIndustries: ['High-Tech & Software', 'Corporate & Infrastructure'],
+    recommendedIndustries: ['Tech & Software', 'Corporate & Infrastructure'],
     popular: false,
   },
   {
@@ -106,7 +106,7 @@ export const STANDARDS_DATA: StandardItem[] = [
     keyClauses: ['Business Impact Analysis (BIA)', 'Risk Assessment for Outages', 'Business Continuity Strategy', 'Emergency Drills & Testing', 'Performance Evaluation'],
     deliverables: ['Business Impact Analysis (BIA) Report', 'BCP & Disaster Recovery Plans', 'Crisis Management Communication Matrix', 'Drill & Test Playbooks'],
     targetAudience: ['Banking & Financial Institutions', 'Data Centers', 'Telecommunication Operators', 'Essential Infrastructure'],
-    recommendedIndustries: ['High-Tech & Software', 'Corporate & Infrastructure'],
+    recommendedIndustries: ['Tech & Software', 'Corporate & Infrastructure'],
     popular: false,
   },
   {
@@ -121,7 +121,7 @@ export const STANDARDS_DATA: StandardItem[] = [
     keyClauses: ['AI Risk & Impact Assessment', 'Data Governance for AI Models', 'Algorithmic Transparency & Explainability', 'AI Model Lifecycle Control', 'Ethical Governance'],
     deliverables: ['AI Governance Charter', 'AI Model Risk Register', 'Data Lineage & Bias Assessment Protocols', 'AIMS Internal Audit Charter'],
     targetAudience: ['AI Startups & Labs', 'Enterprise AI Deployment Units', 'Healthcare AI Providers', 'Fintech Algorithmic Trading'],
-    recommendedIndustries: ['High-Tech & Software'],
+    recommendedIndustries: ['Tech & Software'],
     popular: true,
   },
 
@@ -139,7 +139,7 @@ export const STANDARDS_DATA: StandardItem[] = [
     keyClauses: ['Risk Principles & Architecture', 'Risk Identification & Quantification', 'Risk Treatment Strategies', 'Enterprise Risk Governance', 'Monitoring & Review'],
     deliverables: ['Custom Risk Workshop Curriculum', 'Enterprise Risk Register Templates', 'Executive Training Completion Certificates'],
     targetAudience: ['Chief Risk Officers (CROs)', 'Risk Managers', 'Executive Leadership', 'Board Members'],
-    recommendedIndustries: ['Corporate & Infrastructure', 'High-Tech & Software', 'Heavy Industry & Manufacturing'],
+    recommendedIndustries: ['Corporate & Infrastructure', 'Tech & Software', 'Heavy Industry & Manufacturing'],
     popular: false,
   },
 
@@ -235,7 +235,7 @@ export const STANDARDS_DATA: StandardItem[] = [
     keyClauses: ['Double Materiality Assessment', 'GHG Protocol Scope 1, 2 & 3 Emissions', 'Diversity, Equity & Inclusion (DEI) Metrics', 'Supply Chain Sustainability Oversight'],
     deliverables: ['ESG Baseline Report', 'BRSR & GRI Disclosure Playbook', 'Carbon Footprint Matrix', 'Sustainability Governance Architecture'],
     targetAudience: ['Publicly Listed Companies', 'Large Enterprises', 'Global Exporters', 'ESG-focused Startups'],
-    recommendedIndustries: ['Corporate & Infrastructure', 'Heavy Industry & Manufacturing', 'High-Tech & Software'],
+    recommendedIndustries: ['Corporate & Infrastructure', 'Heavy Industry & Manufacturing', 'Tech & Software'],
     popular: true,
   },
   {
@@ -250,7 +250,7 @@ export const STANDARDS_DATA: StandardItem[] = [
     keyClauses: ['Process Governance & Quality Assurance', 'Product Lifecycle Management', 'Quantitative Process Management', 'Supplier Agreement Management'],
     deliverables: ['Gap Analysis Report', 'Process Asset Library (PAL)', 'SCAMPI / Benchmark Appraisal Readiness Dossier', 'Internal Mock Appraisal Findings'],
     targetAudience: ['Software Development Agencies', 'IT System Integrators', 'Engineering R&D Units'],
-    recommendedIndustries: ['High-Tech & Software'],
+    recommendedIndustries: ['Tech & Software'],
     popular: false,
   },
 ];

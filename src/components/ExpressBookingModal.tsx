@@ -28,7 +28,8 @@ export const ExpressBookingModal: React.FC<ExpressBookingModalProps> = ({
   onClose,
   onAddSubmission
 }) => {
-  const [consultationType, setConsultationType] = useState('Initial Gap Analysis & ISO Strategy');
+  const [selectedPillars, setSelectedPillars] = useState<string[]>(['Consulting', 'Training', 'Audit']);
+  const [consultationType, setConsultationType] = useState('ISO Consulting & Implementation Strategy');
   const [selectedDate, setSelectedDate] = useState<string>(
     new Date(Date.now() + 86400000 * 2).toISOString().split('T')[0]
   );
@@ -47,10 +48,20 @@ export const ExpressBookingModal: React.FC<ExpressBookingModalProps> = ({
 
   if (!isOpen) return null;
 
+  const togglePillar = (pillar: string) => {
+    if (selectedPillars.includes(pillar)) {
+      if (selectedPillars.length > 1) {
+        setSelectedPillars(selectedPillars.filter(p => p !== pillar));
+      }
+    } else {
+      setSelectedPillars([...selectedPillars, pillar]);
+    }
+  };
+
   const consultationTypes = [
-    { id: 'gap', label: 'Initial Gap Analysis & ISO Strategy', duration: '30 Mins', desc: 'Overview of current systems & standard selection' },
-    { id: 'pre-audit', label: 'Pre-Audit Internal Mock Review Call', duration: '45 Mins', desc: 'Planning mock assessment before CB audit' },
-    { id: 'training', label: 'Corporate Lead Auditor Training Inquiry', duration: '30 Mins', desc: 'In-house team upskilling & workshops' },
+    { id: 'consulting', label: 'ISO Consulting & Implementation Strategy', duration: '30 Mins', desc: 'End-to-end framework, SOP drafting & advisory' },
+    { id: 'training', label: 'Corporate Lead Auditor & Staff Training', duration: '30 Mins', desc: 'In-house team upskilling & certified workshops' },
+    { id: 'audit', label: 'Internal Audit & Gap Analysis Review', duration: '45 Mins', desc: 'Gap assessment & mock audit before CB evaluation' },
     { id: 'ai-governance', label: 'ISO 42001 (AI Management) Discovery', duration: '45 Mins', desc: 'AI safety & governance framework planning' },
   ];
 
@@ -97,7 +108,7 @@ export const ExpressBookingModal: React.FC<ExpressBookingModalProps> = ({
       companyName: companyName || 'Not Specified',
       bookingDate: selectedDate,
       bookingTimeSlot: selectedSlot,
-      consultationType,
+      consultationType: `${consultationType} [Scope: ${selectedPillars.join(', ')}]`,
       comments,
       status: 'Scheduled'
     };
@@ -137,21 +148,63 @@ export const ExpressBookingModal: React.FC<ExpressBookingModalProps> = ({
               <div>
                 <div className="inline-flex items-center gap-1.5 text-xs font-mono font-bold bg-amber-100 text-amber-900 px-2.5 py-0.5 rounded border border-amber-200 mb-1">
                   <CalendarIcon className="w-3.5 h-3.5 text-amber-600" />
-                  <span>EXPRESS BOOKING ENGINE</span>
+                  <span>EXPRESS ADVISORY & BOOKING</span>
                 </div>
                 <h3 className="text-2xl font-black text-blue-950 tracking-tight">
-                  Schedule Lead Auditor Consultation
+                  Schedule Consulting, Training & Audit Session
                 </h3>
                 <p className="text-xs text-slate-500">
-                  Direct calendar lock with FireMonk senior management system advisors.
+                  Direct calendar lock with FireMonk ISO consultants, corporate trainers, and lead auditors.
                 </p>
               </div>
             </div>
 
-            {/* 1. Select Consultation Purpose */}
+            {/* 1. Select Service Pillars (Checkboxes) */}
+            <div className="space-y-2 bg-slate-50 p-3.5 rounded-2xl border border-slate-200">
+              <label className="text-xs font-bold uppercase tracking-wider text-blue-950 flex items-center justify-between">
+                <span>1. Service Scope Required (Select Checkboxes) *</span>
+                <span className="text-[10px] text-sky-700 font-mono font-semibold">Multi-Select</span>
+              </label>
+              <div className="grid grid-cols-3 gap-2">
+                {[
+                  { id: 'Consulting', label: 'Consulting', desc: 'ISO Strategy & SOPs' },
+                  { id: 'Training', label: 'Training', desc: 'Lead Auditor Workshops' },
+                  { id: 'Audit', label: 'Audit', desc: 'Gap & Pre-Assessments' }
+                ].map((pillar) => {
+                  const isChecked = selectedPillars.includes(pillar.id);
+                  return (
+                    <button
+                      key={pillar.id}
+                      type="button"
+                      onClick={() => togglePillar(pillar.id)}
+                      className={`p-2.5 rounded-xl border text-left transition-all ${
+                        isChecked
+                          ? 'bg-blue-900 text-white border-blue-900 shadow-2xs font-semibold'
+                          : 'bg-white text-slate-700 border-slate-300 hover:bg-slate-100'
+                      }`}
+                    >
+                      <div className="flex items-center gap-1.5 font-bold text-xs">
+                        <input
+                          type="checkbox"
+                          checked={isChecked}
+                          onChange={() => {}}
+                          className="rounded text-amber-500 focus:ring-amber-400 w-3.5 h-3.5 pointer-events-none"
+                        />
+                        <span>{pillar.label}</span>
+                      </div>
+                      <p className={`text-[9px] mt-1 ${isChecked ? 'text-blue-200' : 'text-slate-500'}`}>
+                        {pillar.desc}
+                      </p>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* 2. Select Primary Session Focus */}
             <div className="space-y-2">
               <label className="text-xs font-bold uppercase tracking-wider text-blue-950">
-                1. Select Consultation Focus
+                2. Select Primary Session Focus
               </label>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 {consultationTypes.map((t) => (
@@ -179,12 +232,12 @@ export const ExpressBookingModal: React.FC<ExpressBookingModalProps> = ({
               </div>
             </div>
 
-            {/* 2. Date & Slot Picker */}
+            {/* 3. Date & 4. Slot Picker */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
               <div className="space-y-1.5">
                 <label className="text-xs font-bold uppercase tracking-wider text-blue-950 flex items-center gap-1">
                   <CalendarIcon className="w-3.5 h-3.5 text-sky-600" />
-                  <span>2. Preferred Date</span>
+                  <span>3. Preferred Date</span>
                 </label>
                 <input
                   type="date"
@@ -198,7 +251,7 @@ export const ExpressBookingModal: React.FC<ExpressBookingModalProps> = ({
               <div className="space-y-1.5">
                 <label className="text-xs font-bold uppercase tracking-wider text-blue-950 flex items-center gap-1">
                   <Clock className="w-3.5 h-3.5 text-sky-600" />
-                  <span>3. Time Slot (IST)</span>
+                  <span>4. Time Slot (IST)</span>
                 </label>
                 <div className="grid grid-cols-2 gap-1.5">
                   {timeSlots.map((s) => (
@@ -219,10 +272,10 @@ export const ExpressBookingModal: React.FC<ExpressBookingModalProps> = ({
               </div>
             </div>
 
-            {/* 3. Prospect Contact Details */}
+            {/* 5. Prospect Contact Details */}
             <div className="space-y-3 pt-2 border-t border-slate-100">
               <h4 className="text-xs font-bold uppercase tracking-wider text-blue-950">
-                4. Enter Contact Details
+                5. Enter Contact Details
               </h4>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">

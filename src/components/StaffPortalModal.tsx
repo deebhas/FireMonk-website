@@ -21,7 +21,7 @@ interface StaffPortalModalProps {
   leadCount: number;
 }
 
-const DEFAULT_ADMIN_PIN = 'firemonk2026';
+const DEFAULT_ADMIN_PIN = 'FireMonk@1234';
 
 export const StaffPortalModal: React.FC<StaffPortalModalProps> = ({
   isOpen,
@@ -112,7 +112,7 @@ export const StaffPortalModal: React.FC<StaffPortalModalProps> = ({
 
                 {pinError && (
                   <p className="text-xs font-semibold text-red-600 mt-1.5">
-                    ❌ Incorrect Admin Passcode. Default: <code className="font-mono bg-red-100 px-1 rounded">firemonk2026</code>
+                    ❌ Incorrect Admin Passcode. Access denied.
                   </p>
                 )}
               </div>
@@ -125,10 +125,6 @@ export const StaffPortalModal: React.FC<StaffPortalModalProps> = ({
                 <span>Authenticate Staff Login</span>
               </button>
             </form>
-
-            <div className="pt-3 text-[11px] text-slate-400 border-t border-slate-100">
-              <span>Passcode: <strong className="text-slate-700 font-mono">firemonk2026</strong></span>
-            </div>
           </div>
         ) : (
           /* Unlocked Admin Hub Options */

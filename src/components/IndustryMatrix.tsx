@@ -22,7 +22,7 @@ export const IndustryMatrix: React.FC<IndustryMatrixProps> = ({
   onOpenCustomQuote,
   onOpenExpressBooking
 }) => {
-  const [selectedSector, setSelectedSector] = useState<IndustrySector>('High-Tech & Software');
+  const [selectedSector, setSelectedSector] = useState<IndustrySector>('Tech & Software');
 
   const getIcon = (iconName: string) => {
     switch (iconName) {

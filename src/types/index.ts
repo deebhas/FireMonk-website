@@ -26,7 +26,7 @@ export interface StandardItem {
 }
 
 export type IndustrySector = 
-  | 'High-Tech & Software'
+  | 'Tech & Software'
   | 'Life Sciences & Healthcare'
   | 'Heavy Industry & Manufacturing'
   | 'Corporate & Infrastructure';

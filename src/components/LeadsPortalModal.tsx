@@ -22,7 +22,7 @@ interface LeadsPortalModalProps {
   onClearSubmissions: () => void;
 }
 
-const DEFAULT_ADMIN_PIN = 'firemonk2026';
+const DEFAULT_ADMIN_PIN = 'FireMonk@1234';
 
 export const LeadsPortalModal: React.FC<LeadsPortalModalProps> = ({
   isOpen,
@@ -155,7 +155,7 @@ export const LeadsPortalModal: React.FC<LeadsPortalModalProps> = ({
 
                 {pinError && (
                   <p className="text-xs font-semibold text-red-600 mt-1.5">
-                    ❌ Incorrect Admin Passcode. Default password: <code className="font-mono bg-red-100 px-1 rounded">firemonk2026</code>
+                    ❌ Incorrect Admin Passcode. Access denied.
                   </p>
                 )}
               </div>
@@ -168,10 +168,6 @@ export const LeadsPortalModal: React.FC<LeadsPortalModalProps> = ({
                 <span>Unlock Portal</span>
               </button>
             </form>
-
-            <div className="pt-3 text-[11px] text-slate-400 border-t border-slate-100">
-              <span>Default password: <strong className="text-slate-700 font-mono">firemonk2026</strong></span>
-            </div>
           </div>
         </div>
       </div>

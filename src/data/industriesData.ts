@@ -2,8 +2,8 @@ import { IndustryItem } from '../types';
 
 export const INDUSTRIES_DATA: IndustryItem[] = [
   {
-    id: 'High-Tech & Software',
-    title: 'High-Tech & Software Enterprise',
+    id: 'Tech & Software',
+    title: 'Tech & Software Enterprise',
     iconName: 'Cpu',
     description: 'Tailored compliance, cyber security, privacy, and AI governance solutions for tech companies, SaaS platforms, and cloud infrastructure leaders.',
     subSectors: [

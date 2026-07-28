@@ -60,7 +60,7 @@ export const Hero: React.FC<HeroProps> = ({
               </div>
               <div className="flex items-center gap-2 justify-center lg:justify-start">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>IRCA Certified Lead Auditor Experts</span>
+                <span>IRCA Certified Lead Auditors</span>
               </div>
               <div className="flex items-center gap-2 justify-center lg:justify-start">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />

@@ -206,7 +206,7 @@ export const ReadinessQuiz: React.FC<ReadinessQuizProps> = ({
                 onClick={onOpenExpressBooking}
                 className="w-full sm:w-auto bg-blue-900 hover:bg-blue-800 text-white font-semibold py-3.5 px-6 rounded-xl text-sm border border-blue-700"
               >
-                Schedule Lead Auditor Review
+                Schedule Consulting, Training or Audit Review
               </button>
 
               <button
