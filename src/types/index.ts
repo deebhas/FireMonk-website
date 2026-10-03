@@ -1,4 +1,4 @@
-export type ServiceType = 'Consulting' | 'Auditing' | 'Training' | 'Training Only';
+export type ServiceType = 'Consulting' | 'Auditing' | 'Training' | 'Training Only' | 'Digital Transformation';
 
 export type StandardCategory = 
   | 'Core ISO'

@@ -165,7 +165,7 @@ export const StandardsDirectory: React.FC<StandardsDirectoryProps> = ({
                       className={`text-[10px] font-extrabold px-2 py-0.5 rounded border uppercase tracking-wider ${
                         srv === 'Consulting'
                           ? 'bg-sky-50 text-sky-800 border-sky-300'
-                          : srv === 'Auditing' || srv === 'Audit'
+                          : srv === 'Auditing'
                           ? 'bg-amber-50 text-amber-800 border-amber-300'
                           : srv === 'Training' || srv === 'Training Only' || st.isTrainingOnly
                           ? 'bg-emerald-50 text-emerald-800 border-emerald-300'

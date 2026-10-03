@@ -47,6 +47,7 @@ export const QuoteCalculator: React.FC<QuoteCalculatorProps> = ({
 
   const scopeOptions = [
     'Full Consulting + Training + Internal Audit',
+    'Full Advisory + Digital Transformation & Mobile Workflows',
     'Internal Audit & Mock Assessment Only',
     'Corporate Lead Auditor Training Only',
   ];

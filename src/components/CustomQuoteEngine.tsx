@@ -89,7 +89,8 @@ export const CustomQuoteEngine: React.FC<CustomQuoteEngineProps> = ({
     'Management System Consulting',
     'Internal Auditing & Mock Review',
     'Corporate Lead Auditor Training',
-    'Gap Analysis & Readiness Audit'
+    'Gap Analysis & Readiness Audit',
+    'Digital Transformation Services'
   ];
 
   const toggleStandard = (st: string) => {
