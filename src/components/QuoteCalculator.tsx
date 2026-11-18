@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
-import { 
-  Calculator, 
-  Clock, 
-  FileText, 
-  Users, 
-  Layers, 
-  Sparkles,
+import { motion } from 'motion/react';
+import {
+  Calculator,
+  Clock,
+  FileText,
+  Users,
+  Layers,
   ArrowRight,
   ShieldCheck
 } from 'lucide-react';
+import heroEnterpriseHub from '../assets/images/hero_enterprise_hub_1795006383269.jpg';
 
 interface QuoteCalculatorProps {
   onLoadIntoQuoteEngine: (standards: string[], employeeCount: string, serviceScope: string) => void;
@@ -60,7 +61,6 @@ export const QuoteCalculator: React.FC<QuoteCalculatorProps> = ({
     }
   };
 
-  // Estimate duration
   const getEstimatedDuration = () => {
     let weeks = 6;
     if (selectedStandards.length > 1) weeks += (selectedStandards.length - 1) * 2;
@@ -77,32 +77,43 @@ export const QuoteCalculator: React.FC<QuoteCalculatorProps> = ({
     return `${count}+ Custom SOPs & Policies`;
   };
 
+  const durationText = getEstimatedDuration();
+  const artifactsText = getEstimatedArtifacts();
+
   return (
-    <section id="estimator" className="py-16 bg-white border-b border-slate-200">
+    <section id="estimator" className="py-20 bg-white border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Title */}
-        <div className="text-center max-w-3xl mx-auto space-y-3 mb-12">
-          <span className="bg-sky-100 text-sky-900 font-bold text-xs uppercase px-3 py-1 rounded-full border border-sky-200">
-            Interactive Planning Tool
-          </span>
-          <h2 className="text-3xl font-black text-blue-950 tracking-tight">
+
+        {/* Editorial Title */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.45 }}
+          className="text-center max-w-3xl mx-auto space-y-3 mb-12"
+        >
+          <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#0060df]">
+            <span className="w-6 h-0.5 bg-[#ff5500] rounded-full" />
+            <span>Interactive Planning Tool</span>
+            <span className="w-6 h-0.5 bg-[#ff5500] rounded-full" />
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-black text-blue-950 tracking-tight">
             ISO Project Timeline & Resource Estimator
           </h2>
-          <p className="text-slate-600 text-sm">
-            Select your target standards, organization size, and desired service level to generate an instant project roadmap estimate.
+          <p className="text-slate-600 text-sm sm:text-base">
+            Select your target standards, organization size, and desired service scope to generate an instant roadmap estimate.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+
           {/* Controls Column (Col 1-7) */}
           <div className="lg:col-span-7 bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-8 space-y-6">
-            
+
             {/* 1. Standards */}
             <div className="space-y-2.5">
               <label className="text-xs font-bold uppercase tracking-wider text-blue-950 flex items-center gap-2">
-                <Layers className="w-4 h-4 text-sky-600" />
+                <Layers className="w-4 h-4 text-[#0060df]" />
                 <span>1. Select Target ISO Standards / Frameworks</span>
               </label>
               <div className="flex flex-wrap gap-2">
@@ -115,7 +126,7 @@ export const QuoteCalculator: React.FC<QuoteCalculatorProps> = ({
                       onClick={() => toggleStandard(st)}
                       className={`text-xs font-semibold px-3 py-2 rounded-xl border transition-all ${
                         isSelected
-                          ? 'bg-blue-900 text-white border-blue-900 shadow-2xs'
+                          ? 'bg-gradient-to-r from-blue-950 to-blue-900 text-white border-blue-900 shadow-xs'
                           : 'bg-white text-slate-700 border-slate-300 hover:border-blue-400 hover:bg-slate-100'
                       }`}
                     >
@@ -130,7 +141,7 @@ export const QuoteCalculator: React.FC<QuoteCalculatorProps> = ({
             {/* 2. Headcount */}
             <div className="space-y-2.5">
               <label className="text-xs font-bold uppercase tracking-wider text-blue-950 flex items-center gap-2">
-                <Users className="w-4 h-4 text-sky-600" />
+                <Users className="w-4 h-4 text-[#0060df]" />
                 <span>2. Organization Headcount in Scope</span>
               </label>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
@@ -141,9 +152,9 @@ export const QuoteCalculator: React.FC<QuoteCalculatorProps> = ({
                       key={sz}
                       type="button"
                       onClick={() => setEmployeeSize(sz)}
-                      className={`text-xs font-semibold p-2.5 rounded-xl border text-center transition-all ${
+                      className={`text-xs font-semibold p-2.5 rounded-xl border text-center transition-all tabular-nums ${
                         isSelected
-                          ? 'bg-blue-900 text-white border-blue-900 font-bold shadow-2xs'
+                          ? 'bg-blue-950 text-white border-blue-900 font-bold shadow-xs'
                           : 'bg-white text-slate-700 border-slate-300 hover:bg-slate-100'
                       }`}
                     >
@@ -157,7 +168,7 @@ export const QuoteCalculator: React.FC<QuoteCalculatorProps> = ({
             {/* 3. Service Scope */}
             <div className="space-y-2.5">
               <label className="text-xs font-bold uppercase tracking-wider text-blue-950 flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-sky-600" />
+                <ShieldCheck className="w-4 h-4 text-[#0060df]" />
                 <span>3. Service Level & Scope</span>
               </label>
               <div className="grid grid-cols-1 gap-2">
@@ -168,10 +179,10 @@ export const QuoteCalculator: React.FC<QuoteCalculatorProps> = ({
                       key={sc}
                       type="button"
                       onClick={() => setServiceScope(sc)}
-                      className={`text-xs font-bold p-3 rounded-xl border text-left transition-all flex items-center justify-between ${
+                      className={`text-xs font-bold p-3.5 rounded-xl border text-left transition-all flex items-center justify-between ${
                         isSelected
                           ? 'bg-blue-950 text-white border-blue-900 shadow-sm ring-1 ring-blue-700'
-                          : 'bg-white text-slate-800 border-slate-300 hover:bg-slate-50'
+                          : 'bg-white text-slate-800 border-slate-300 hover:bg-slate-100'
                       }`}
                     >
                       {sc === 'Full Consulting + Training + Internal Audit' ? (
@@ -193,7 +204,7 @@ export const QuoteCalculator: React.FC<QuoteCalculatorProps> = ({
                       )}
 
                       {isSelected && (
-                        <span className="text-amber-400 font-bold text-xs bg-amber-950/80 px-2 py-0.5 rounded border border-amber-800">
+                        <span className="text-amber-300 font-bold text-xs whitespace-nowrap shrink-0">
                           Selected ✓
                         </span>
                       )}
@@ -202,61 +213,81 @@ export const QuoteCalculator: React.FC<QuoteCalculatorProps> = ({
                 })}
               </div>
             </div>
-
           </div>
 
-          {/* Output Column (Col 8-12) */}
-          <div className="lg:col-span-5 bg-gradient-to-br from-blue-950 to-slate-900 text-white rounded-3xl p-6 sm:p-8 border border-blue-800 shadow-xl space-y-6">
-            <div className="flex items-center gap-3 border-b border-blue-800 pb-4">
-              <div className="w-10 h-10 rounded-xl bg-orange-500/20 text-orange-400 flex items-center justify-center font-bold">
-                <Calculator className="w-5 h-5" />
+          {/* Output Column with Subtle Moving Photographic Scrim (Col 8-12) */}
+          <div className="lg:col-span-5 relative bg-[#070e22] text-white rounded-3xl p-6 sm:p-8 border border-blue-800/80 shadow-2xl overflow-hidden flex flex-col justify-between space-y-6">
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+              <img
+                src={heroEnterpriseHub}
+                alt=""
+                referrerPolicy="no-referrer"
+                className="w-full h-full object-cover animate-ken-burns opacity-20"
+              />
+              <div className="absolute inset-0 bg-gradient-to-br from-[#070e22]/94 via-[#0a183b]/88 to-[#060c1c]/95" />
+            </div>
+
+            <div className="relative z-10 space-y-6">
+              <div className="flex items-center gap-3 border-b border-blue-800/70 pb-4">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#ff5500] to-amber-500 text-white flex items-center justify-center shadow">
+                  <Calculator className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-white">Project Estimation Output</h3>
+                  <p className="text-xs text-sky-300">FireMonk Strategic Blueprint</p>
+                </div>
               </div>
-              <div>
-                <h3 className="text-lg font-bold text-white">Project Estimation Output</h3>
-                <p className="text-xs text-blue-200">FireMonk Strategic Blueprint</p>
+
+              <div className="space-y-4">
+                <div className="bg-slate-950/75 backdrop-blur-sm rounded-2xl p-4 border border-blue-800/70 flex items-center justify-between">
+                  <div>
+                    <div className="text-[11px] text-slate-400 font-medium uppercase">Estimated Duration</div>
+                    <motion.div
+                      key={durationText}
+                      initial={{ opacity: 0.5, y: 4 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.2 }}
+                      className="text-2xl font-black text-amber-400 tabular-nums mt-0.5"
+                    >
+                      {durationText}
+                    </motion.div>
+                  </div>
+                  <Clock className="w-8 h-8 text-sky-400/80" />
+                </div>
+
+                <div className="bg-slate-950/75 backdrop-blur-sm rounded-2xl p-4 border border-blue-800/70 flex items-center justify-between">
+                  <div>
+                    <div className="text-[11px] text-slate-400 font-medium uppercase">Deliverable Documentation</div>
+                    <motion.div
+                      key={artifactsText}
+                      initial={{ opacity: 0.5, y: 4 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.2 }}
+                      className="text-xl font-bold text-white tabular-nums mt-0.5"
+                    >
+                      {artifactsText}
+                    </motion.div>
+                  </div>
+                  <FileText className="w-8 h-8 text-emerald-400/80" />
+                </div>
+
+                <div className="space-y-2 text-xs text-blue-100 bg-blue-950/70 p-4 rounded-xl border border-blue-800/70">
+                  <div className="font-bold text-white">Selected Configuration Summary</div>
+                  <ul className="space-y-1 text-slate-300 text-xs">
+                    <li><strong className="text-sky-300">Standards:</strong> {selectedStandards.join(', ')}</li>
+                    <li><strong className="text-sky-300">Headcount:</strong> {employeeSize}</li>
+                    <li><strong className="text-sky-300">Scope:</strong> {serviceScope}</li>
+                  </ul>
+                </div>
               </div>
             </div>
 
-            <div className="space-y-4">
-              <div className="bg-slate-900/90 rounded-2xl p-4 border border-blue-800 flex items-center justify-between">
-                <div>
-                  <div className="text-[11px] text-slate-400 font-medium uppercase">Estimated Duration</div>
-                  <div className="text-2xl font-black text-amber-400 font-mono mt-0.5">
-                    {getEstimatedDuration()}
-                  </div>
-                </div>
-                <Clock className="w-8 h-8 text-sky-400/80" />
-              </div>
-
-              <div className="bg-slate-900/90 rounded-2xl p-4 border border-blue-800 flex items-center justify-between">
-                <div>
-                  <div className="text-[11px] text-slate-400 font-medium uppercase">Deliverable Documentation</div>
-                  <div className="text-xl font-bold text-white font-mono mt-0.5">
-                    {getEstimatedArtifacts()}
-                  </div>
-                </div>
-                <FileText className="w-8 h-8 text-emerald-400/80" />
-              </div>
-
-              <div className="space-y-1.5 text-xs text-blue-100 bg-blue-900/50 p-3.5 rounded-xl border border-blue-800">
-                <div className="font-bold text-white flex items-center gap-1.5">
-                  <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-                  <span>Selected Configuration Summary:</span>
-                </div>
-                <ul className="list-disc list-inside space-y-1 text-slate-300 text-[11px]">
-                  <li>Standards: {selectedStandards.join(', ')}</li>
-                  <li>Headcount: {employeeSize}</li>
-                  <li>Scope: {serviceScope}</li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="space-y-2 pt-2">
+            <div className="space-y-2 pt-2 relative z-10">
               <button
                 onClick={() => onLoadIntoQuoteEngine(selectedStandards, employeeSize, serviceScope)}
-                className="w-full bg-gradient-to-r from-orange-500 to-amber-600 hover:from-orange-600 text-white font-bold py-3.5 px-5 rounded-xl text-sm transition-all shadow flex items-center justify-center gap-2"
+                className="w-full bg-gradient-to-r from-[#ff5500] to-amber-500 hover:from-[#e64d00] hover:to-amber-600 text-white font-bold py-3.5 px-5 rounded-xl text-sm transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2"
               >
-                <span>Load Choices Into Official Quote Request</span>
+                <span>Load Choices Into Proposal Request</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
               <button

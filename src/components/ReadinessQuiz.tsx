@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
-import { 
-  HelpCircle, 
-  CheckCircle2, 
-  AlertCircle, 
-  RotateCcw, 
-  ArrowRight, 
-  Sparkles,
-  Award,
-  FileText
+import { motion, AnimatePresence } from 'motion/react';
+import {
+  RotateCcw,
+  ArrowRight,
+  FileText,
+  Compass
 } from 'lucide-react';
+import heroEnterpriseHub from '../assets/images/hero_enterprise_hub_1795006383269.jpg';
 
 interface ReadinessQuizProps {
   onOpenCustomQuote: (prefillStandard?: string) => void;
@@ -91,31 +89,41 @@ export const ReadinessQuiz: React.FC<ReadinessQuizProps> = ({
   const score = showResult ? calculateScore() : 0;
 
   return (
-    <div className="bg-gradient-to-br from-blue-950 via-blue-900 to-slate-900 text-white rounded-3xl p-6 sm:p-10 border border-blue-800 shadow-2xl relative overflow-hidden">
-      
-      {/* Background ambient light */}
-      <div className="absolute -top-10 -right-10 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+    <div className="relative bg-[#0a132c] text-white rounded-3xl p-6 sm:p-10 border border-blue-800/80 shadow-2xl overflow-hidden">
+      {/* Moving Subtle Background Layer */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <img
+          src={heroEnterpriseHub}
+          alt=""
+          referrerPolicy="no-referrer"
+          className="w-full h-full object-cover animate-ken-burns opacity-20"
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#08122b]/95 via-[#0b193d]/88 to-[#070f24]/95" />
+      </div>
 
-      <div className="max-w-3xl mx-auto space-y-6">
-        
+      {/* Warm Amber Atmospheric Accent */}
+      <div className="absolute -top-16 -right-16 w-72 h-72 bg-[#ff5500]/15 rounded-full blur-3xl animate-ambient pointer-events-none" />
+
+      <div className="max-w-3xl mx-auto space-y-6 relative z-10">
+
         {/* Header */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-800 pb-5">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-amber-500/15 text-amber-300 flex items-center justify-center font-bold">
-              <Sparkles className="w-5 h-5" />
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-blue-800/70 pb-5">
+          <div className="flex items-center gap-3.5">
+            <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#ff5500] to-amber-500 text-white flex items-center justify-center shadow-md shrink-0">
+              <Compass className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-xl font-black text-slate-100 tracking-tight">
-                ISO Audit Readiness Self-Assessment Quiz
+              <h3 className="text-xl font-black text-white tracking-tight">
+                ISO Audit Readiness Self-Assessment
               </h3>
-              <p className="text-xs text-slate-300">
-                Answer 4 quick questions to receive a preliminary readiness score and estimated timeline.
+              <p className="text-xs sm:text-sm text-slate-300">
+                Answer 4 quick questions to estimate your organization's readiness baseline.
               </p>
             </div>
           </div>
 
           {!showResult && (
-            <span className="text-xs font-mono font-bold bg-slate-800 text-sky-300 px-3 py-1 rounded-full border border-slate-700">
+            <span className="text-xs font-bold text-sky-300 tabular-nums whitespace-nowrap shrink-0">
               Question {currentQuestion + 1} of {questions.length}
             </span>
           )}
@@ -123,102 +131,113 @@ export const ReadinessQuiz: React.FC<ReadinessQuizProps> = ({
 
         {/* Quiz Body */}
         {!showResult ? (
-          <div className="space-y-6 animate-in fade-in duration-300">
-            
-            <h4 className="text-lg font-bold text-slate-100 leading-snug">
-              {questions[currentQuestion].title}
-            </h4>
+          <div className="space-y-6">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentQuestion}
+                initial={{ opacity: 0, x: 16 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -16 }}
+                transition={{ duration: 0.25 }}
+                className="space-y-5"
+              >
+                <h4 className="text-lg sm:text-xl font-bold text-white leading-snug">
+                  {questions[currentQuestion].title}
+                </h4>
 
-            <div className="grid grid-cols-1 gap-3">
-              {questions[currentQuestion].options.map((opt, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => handleSelectOption(opt.points)}
-                  className="w-full text-left p-4 rounded-2xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-sky-400/80 transition-all group flex items-center justify-between gap-4"
-                >
-                  <span className="text-sm font-semibold text-slate-200 group-hover:text-sky-300">
-                    {opt.label}
-                  </span>
-                  <div className="w-6 h-6 rounded-full border border-slate-600 group-hover:border-sky-400 flex items-center justify-center shrink-0">
-                    <ArrowRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-sky-400" />
-                  </div>
-                </button>
-              ))}
-            </div>
+                <div className="grid grid-cols-1 gap-3">
+                  {questions[currentQuestion].options.map((opt, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => handleSelectOption(opt.points)}
+                      className="w-full text-left p-4 rounded-2xl bg-slate-900/75 hover:bg-blue-900/70 border border-blue-800/70 hover:border-amber-400/80 transition-all duration-150 group flex items-center justify-between gap-4"
+                    >
+                      <span className="text-sm font-semibold text-slate-100 group-hover:text-white">
+                        {opt.label}
+                      </span>
+                      <div className="w-7 h-7 rounded-full border border-blue-700 group-hover:border-amber-400 group-hover:bg-amber-400/15 flex items-center justify-center shrink-0 transition-colors">
+                        <ArrowRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-amber-300 transition-transform group-hover:translate-x-0.5" />
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </motion.div>
+            </AnimatePresence>
 
             <div className="w-full bg-slate-950 h-2 rounded-full overflow-hidden border border-slate-800">
-              <div 
-                className="bg-sky-500 h-full transition-all duration-300"
-                style={{ width: `${((currentQuestion + 1) / questions.length) * 100}%` }}
+              <motion.div
+                animate={{ width: `${((currentQuestion + 1) / questions.length) * 100}%` }}
+                transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                className="bg-gradient-to-r from-[#0060df] via-sky-400 to-[#ff5500] h-full"
               />
             </div>
-
           </div>
         ) : (
           /* Results Panel */
-          <div className="space-y-6 animate-in zoom-in-95 duration-300">
-            
-            <div className="bg-slate-900/90 rounded-2xl p-6 border border-blue-700 space-y-4">
-              
-              <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.97 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.3 }}
+            className="space-y-6"
+          >
+            <div className="bg-slate-950/80 backdrop-blur-sm rounded-2xl p-6 border border-blue-700/80 space-y-4">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div>
-                  <span className="text-xs text-amber-400 font-mono font-bold uppercase tracking-wider">
+                  <span className="text-xs text-amber-400 font-bold uppercase tracking-wider">
                     Assessment Calculation Complete
                   </span>
-                  <h4 className="text-2xl font-black text-white">
+                  <h4 className="text-2xl font-black text-white mt-0.5">
                     Estimated Audit Readiness Baseline
                   </h4>
                 </div>
-                
-                <div className="flex items-center gap-2 bg-blue-950 px-5 py-3 rounded-2xl border border-blue-700">
-                  <span className="text-3xl font-black font-mono text-amber-400">{score}%</span>
+
+                <div className="flex items-center gap-3 bg-blue-950/90 px-5 py-3 rounded-2xl border border-blue-700">
+                  <span className="text-3xl font-black text-amber-400 tabular-nums">{score}%</span>
                   <span className="text-xs text-slate-300 font-medium leading-tight">
                     Readiness<br />Score
                   </span>
                 </div>
               </div>
 
-              <div className="text-xs text-slate-300 space-y-2 leading-relaxed pt-2 border-t border-slate-800">
+              <div className="text-xs sm:text-sm text-slate-300 space-y-2 leading-relaxed pt-3 border-t border-slate-800">
                 {score >= 70 ? (
                   <p className="text-emerald-300 font-medium">
-                    🎉 Excellent baseline! Your organization has strong documentation potential. FireMonk can conduct a targeted internal mock audit (Step 03) to quickly clear final non-conformities before accredited CB certification.
+                    Strong baseline: Your organization demonstrates solid documentation maturity. FireMonk can conduct a targeted internal mock audit (Step 03) to close remaining non-conformities before external certification.
                   </p>
                 ) : (
                   <p className="text-sky-200 font-medium">
-                    ⚡ Recommended Action: Your processes require structured ISO clause alignment, SOP documentation, and core employee training (Steps 01 & 02). FireMonk can construct a tailored 8-12 week consulting roadmap for your team.
+                    Recommended path: Your processes will benefit from structured ISO clause alignment, SOP documentation, and team training (Steps 01 and 02). FireMonk can build an 8-12 week consulting roadmap tailored to your operations.
                   </p>
                 )}
               </div>
-
             </div>
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row items-center gap-3">
               <button
                 onClick={() => onOpenCustomQuote()}
-                className="w-full sm:w-auto flex-1 bg-gradient-to-r from-orange-500 to-amber-600 hover:from-orange-600 text-white font-bold py-3.5 px-6 rounded-xl text-sm transition-all shadow flex items-center justify-center gap-2"
+                className="w-full sm:w-auto flex-1 bg-gradient-to-r from-[#ff5500] to-amber-500 hover:from-[#e64d00] text-white font-bold py-3.5 px-6 rounded-xl text-sm transition-all shadow flex items-center justify-center gap-2 whitespace-nowrap shrink-0"
               >
                 <FileText className="w-4 h-4" />
-                <span>Request Custom Proposal Based on Quiz</span>
+                <span>Request Custom Proposal</span>
               </button>
 
               <button
                 onClick={onOpenExpressBooking}
-                className="w-full sm:w-auto bg-blue-900 hover:bg-blue-800 text-white font-semibold py-3.5 px-6 rounded-xl text-sm border border-blue-700"
+                className="w-full sm:w-auto bg-white/10 hover:bg-white/15 text-white font-semibold py-3.5 px-6 rounded-xl text-sm border border-white/20 transition-colors whitespace-nowrap shrink-0"
               >
-                Schedule Consulting, Training or Audit Review
+                Schedule Advisory Review
               </button>
 
               <button
                 onClick={handleReset}
-                className="text-xs text-slate-400 hover:text-white underline py-2 flex items-center gap-1"
+                className="text-xs text-slate-300 hover:text-white py-2 px-2 flex items-center gap-1.5 whitespace-nowrap shrink-0"
               >
                 <RotateCcw className="w-3.5 h-3.5" />
-                <span>Retake Quiz</span>
+                <span>Retake</span>
               </button>
             </div>
-
-          </div>
+          </motion.div>
         )}
 
       </div>

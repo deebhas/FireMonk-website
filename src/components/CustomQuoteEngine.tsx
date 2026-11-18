@@ -184,11 +184,13 @@ export const CustomQuoteEngine: React.FC<CustomQuoteEngineProps> = ({
     <section id="quote" className="py-16 bg-slate-50 border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Title Header */}
+        {/* Editorial Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3 mb-12">
-          <span className="bg-amber-100 text-amber-900 font-bold text-xs uppercase px-3 py-1 rounded-full border border-amber-200">
-            Action Pathway B • Formal Proposal Hub
-          </span>
+          <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#0060df]">
+            <span className="w-6 h-0.5 bg-[#ff5500] rounded-full" />
+            <span>Formal Corporate Proposal Hub</span>
+            <span className="w-6 h-0.5 bg-[#ff5500] rounded-full" />
+          </div>
           <h2 className="text-3xl sm:text-4xl font-black text-blue-950 tracking-tight">
             Request Custom Corporate Proposal
           </h2>
@@ -559,11 +561,11 @@ export const CustomQuoteEngine: React.FC<CustomQuoteEngineProps> = ({
               
               <div className="flex items-center justify-between border-b border-blue-800 pb-4">
                 <div className="flex items-center gap-2">
-                  <Sparkles className="w-5 h-5 text-amber-400" />
+                  <FileText className="w-5 h-5 text-amber-400" />
                   <h3 className="text-base font-bold text-white">Proposal Blueprint Preview</h3>
                 </div>
-                <span className="text-[10px] font-mono bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded border border-amber-500/30">
-                  LIVE DRAFT
+                <span className="text-[11px] font-bold tracking-wide text-amber-300">
+                  Live Draft
                 </span>
               </div>
 

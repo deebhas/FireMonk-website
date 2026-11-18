@@ -1,13 +1,18 @@
 @import "tailwindcss";
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     font-family: 'Fira Sans', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Fira Sans', 'Plus Jakarta Sans', sans-serif;
-    letter-spacing: -0.015em;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
   }
 }
 
@@ -23,22 +28,124 @@
   font-family: 'Orbitron', sans-serif;
 }
 
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
 .ff-gradient-text {
-  background: linear-gradient(135deg, #0060df 0%, #0080ff 30%, #ff5500 75%, #ff8800 100%);
+  background: linear-gradient(135deg, #0060df 0%, #0ea5e9 35%, #ff5500 75%, #f59e0b 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .ff-gradient-text-light {
-  background: linear-gradient(135deg, #38bdf8 0%, #60a5fa 35%, #ff7700 75%, #ffd600 100%);
+  background: linear-gradient(135deg, #38bdf8 0%, #7dd3fc 32%, #fb923c 72%, #fbbf24 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .ff-gradient-bg {
-  background: linear-gradient(135deg, #0a1026 0%, #1e1b4b 50%, #111827 100%);
+  background: linear-gradient(135deg, #070d1f 0%, #0f1d45 50%, #090e1c 100%);
 }
 
 .ff-gradient-card {
-  background: linear-gradient(135deg, rgba(0, 96, 223, 0.05) 0%, rgba(255, 85, 0, 0.05) 100%);
+  background: linear-gradient(135deg, rgba(0, 96, 223, 0.06) 0%, rgba(255, 85, 0, 0.06) 100%);
+}
+
+/* Subtle architectural grid texture */
+.bg-arch-grid {
+  background-image:
+    linear-gradient(to right, rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.bg-arch-grid-light {
+  background-image:
+    linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* Smooth Ken Burns moving-picture animations (compositor-only) */
+@keyframes kenBurnsHero {
+  0% {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: scale(1.08) translate3d(-1.5%, -1%, 0);
+  }
+  100% {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes kenBurnsCard {
+  0% {
+    transform: scale(1.02) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: scale(1.1) translate3d(1.5%, -1.2%, 0);
+  }
+  100% {
+    transform: scale(1.02) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes marqueeScroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes ambientDrift {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.45;
+  }
+  50% {
+    transform: translate3d(24px, -18px, 0) scale(1.08);
+    opacity: 0.7;
+  }
+}
+
+.animate-ken-burns {
+  animation: kenBurnsHero 28s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-ken-burns-card {
+  animation: kenBurnsCard 22s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 36s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+.animate-ambient {
+  animation: ambientDrift 14s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-ken-burns,
+  .animate-ken-burns-card,
+  .animate-marquee,
+  .animate-ambient {
+    animation: none !important;
+  }
 }

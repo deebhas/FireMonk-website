@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { MotionConfig } from 'motion/react';
 import { LeadSubmission } from './types';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
@@ -92,6 +93,7 @@ export default function App() {
   };
 
   return (
+    <MotionConfig reducedMotion="user">
     <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900 font-sans selection:bg-amber-400 selection:text-blue-950">
       
       {/* Sticky Global Navigation */}
@@ -129,8 +131,9 @@ export default function App() {
             />
 
             {/* Interactive Readiness Self-Assessment Quiz */}
-            <div id="readiness-quiz-section" className="py-16 bg-slate-900">
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div id="readiness-quiz-section" className="relative py-20 bg-[#070d1f] overflow-hidden border-b border-slate-800">
+              <div className="absolute inset-0 bg-arch-grid opacity-60 pointer-events-none" />
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <ReadinessQuiz
                   onOpenCustomQuote={handleOpenCustomQuoteWithStandard}
                   onOpenExpressBooking={() => setIsExpressBookingOpen(true)}
@@ -286,5 +289,6 @@ export default function App() {
       />
 
     </div>
+    </MotionConfig>
   );
 }

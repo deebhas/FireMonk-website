@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FireMonkLogo } from './FireMonkLogo';
+import { motion } from 'motion/react';
 import { 
   MapPin, 
   Phone, 
@@ -8,9 +9,8 @@ import {
   FileText, 
   Menu, 
   X, 
-  Sparkles,
   Lock,
-  CheckCircle2
+  ArrowUpRight
 } from 'lucide-react';
 
 interface NavbarProps {
@@ -32,11 +32,11 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   const navItems = [
     { id: 'home', label: 'Home' },
-    { id: 'standards', label: 'Browse Standards' },
-    { id: 'industries', label: 'Browse Industries' },
-    { id: 'roadmap', label: '4-Step Roadmap' },
-    { id: 'estimator', label: 'Cost Estimator' },
-    { id: 'quote', label: 'Request Proposal' },
+    { id: 'standards', label: 'Standards' },
+    { id: 'industries', label: 'Industries' },
+    { id: 'roadmap', label: 'Roadmap' },
+    { id: 'estimator', label: 'Estimator' },
+    { id: 'quote', label: 'Proposal' },
   ];
 
   const handleNavClick = (id: string) => {
@@ -59,54 +59,55 @@ export const Navbar: React.FC<NavbarProps> = ({
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-xs">
-      {/* Top Utility Statutory Bar */}
-      <div className="bg-slate-950 text-slate-300 text-xs py-1.5 px-4 border-b border-slate-800">
+    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-xs">
+      {/* Top Utility Bar */}
+      <div className="bg-[#060c1c] text-slate-300 text-xs py-1.5 px-4 border-b border-slate-800/80">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
           
-          <div className="flex items-center gap-4 flex-wrap text-[11px] sm:text-xs">
-            <span className="font-bold text-white font-mono tracking-tight">FireMonk LLP</span>
-            <span className="text-slate-600">•</span>
+          <div className="flex items-center gap-3 flex-wrap text-[11px]">
+            <span className="font-semibold text-white tracking-tight">FireMonk LLP</span>
+            <span className="text-slate-600" aria-hidden="true">·</span>
             <a href="mailto:info@firemonk.org" className="flex items-center gap-1.5 text-slate-300 hover:text-sky-300 transition-colors">
-              <Mail className="w-3.5 h-3.5 text-sky-400" />
+              <Mail className="w-3 h-3 text-sky-400" />
               <span>info@firemonk.org</span>
             </a>
-            <span className="hidden sm:inline-block text-slate-600">•</span>
-            <a href="tel:+919645414333" className="hidden sm:flex items-center gap-1.5 text-slate-300 hover:text-sky-300 transition-colors">
-              <Phone className="w-3.5 h-3.5 text-sky-400" />
+            <span className="hidden sm:inline-block text-slate-600" aria-hidden="true">·</span>
+            <a href="tel:+919645414333" className="hidden sm:flex items-center gap-1.5 text-slate-300 hover:text-sky-300 transition-colors tabular-nums">
+              <Phone className="w-3 h-3 text-sky-400" />
               <span>+91 96454 14333</span>
             </a>
-            <span className="hidden lg:inline-block text-slate-600">•</span>
-            <span className="hidden lg:inline-flex items-center gap-1 text-slate-400 text-[11px]">
-              <MapPin className="w-3 h-3 text-orange-400 shrink-0" />
+            <span className="hidden lg:inline-block text-slate-600" aria-hidden="true">·</span>
+            <span className="hidden lg:inline-flex items-center gap-1 text-slate-400">
+              <MapPin className="w-3 h-3 text-amber-400 shrink-0" />
               <span>Valamkottil Towers, Thrikkakara, Ernakulam, Kerala</span>
             </span>
           </div>
 
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-3 text-[11px]">
             <button
               onClick={handleReadinessClick}
-              className="hidden md:flex text-amber-300 hover:text-amber-200 transition-colors items-center gap-1.5 text-[11px] bg-amber-950/60 hover:bg-amber-900/80 px-2.5 py-0.5 rounded border border-amber-800/80 font-semibold"
+              className="hidden md:inline-flex items-center gap-1 text-amber-300 hover:text-amber-200 font-medium transition-colors whitespace-nowrap shrink-0"
               title="Assess your organization's ISO audit readiness"
             >
-              <Sparkles className="w-3 h-3 text-amber-400" />
               <span>ISO Gap Assessment</span>
+              <ArrowUpRight className="w-3 h-3" />
             </button>
+
+            <span className="hidden md:inline text-slate-700" aria-hidden="true">|</span>
 
             <button
               onClick={onOpenExpressBooking}
-              className="text-slate-200 hover:text-white transition-colors flex items-center gap-1 text-[11px] bg-blue-900 hover:bg-blue-800 px-2.5 py-0.5 rounded border border-blue-700 font-medium"
+              className="text-sky-300 hover:text-white font-medium transition-colors whitespace-nowrap shrink-0"
               title="Schedule immediate advisory session"
             >
-              <CheckCircle2 className="w-3 h-3 text-emerald-400" />
-              <span>Fast Advisory</span>
+              Fast Advisory
             </button>
 
-            {/* Subtle Staff Access Lock Icon */}
             <button
               onClick={onOpenStaffPortal}
               className="text-slate-400 hover:text-slate-200 p-1 rounded hover:bg-slate-800 transition-colors"
               title="FireMonk Staff Portal"
+              aria-label="Open Staff Portal"
             >
               <Lock className="w-3.5 h-3.5" />
             </button>
@@ -116,17 +117,18 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Primary Navigation Bar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between gap-6 h-18">
           
-          {/* Logo */}
-          <div 
-            onClick={() => handleNavClick('home')} 
-            className="cursor-pointer group hover:scale-[1.01] transition-transform"
+          {/* Zone 1: Brand Wordmark */}
+          <button
+            type="button"
+            onClick={() => handleNavClick('home')}
+            className="text-left group hover:opacity-95 transition-opacity shrink-0"
           >
             <FireMonkLogo variant="horizontal" size="md" />
-          </div>
+          </button>
 
-          {/* Desktop Links */}
+          {/* Zone 2: Clean Typographic Nav Links with Motion Active Underline */}
           <nav className="hidden lg:flex items-center gap-1">
             {navItems.map((item) => {
               const isActive = currentView === item.id;
@@ -134,23 +136,30 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <button
                   key={item.id}
                   onClick={() => handleNavClick(item.id)}
-                  className={`px-3.5 py-2 rounded-lg text-sm font-semibold transition-all ${
+                  className={`relative px-3.5 py-2 text-sm font-semibold transition-colors whitespace-nowrap shrink-0 ${
                     isActive
-                      ? 'bg-blue-50 text-blue-900 border border-blue-200'
-                      : 'text-slate-700 hover:text-blue-900 hover:bg-slate-50'
+                      ? 'text-blue-950'
+                      : 'text-slate-600 hover:text-blue-900'
                   }`}
                 >
-                  {item.label}
+                  <span>{item.label}</span>
+                  {isActive && (
+                    <motion.span
+                      layoutId="navActiveUnderline"
+                      transition={{ type: 'spring', stiffness: 420, damping: 32 }}
+                      className="absolute left-3 right-3 bottom-0.5 h-0.5 bg-gradient-to-r from-[#0060df] to-[#ff5500] rounded-full"
+                    />
+                  )}
                 </button>
               );
             })}
           </nav>
 
-          {/* Action CTAs */}
-          <div className="hidden sm:flex items-center gap-3">
+          {/* Zone 3: Action CTAs */}
+          <div className="hidden sm:flex items-center gap-2.5 shrink-0">
             <button
               onClick={onOpenExpressBooking}
-              className="flex items-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-900 border border-slate-300 font-bold px-4 py-2.5 rounded-xl text-sm transition-all shadow-xs hover:shadow"
+              className="flex items-center gap-2 text-slate-700 hover:text-blue-950 hover:bg-slate-100 font-semibold px-3.5 py-2 rounded-xl text-sm transition-colors whitespace-nowrap shrink-0"
             >
               <Calendar className="w-4 h-4 text-[#0060df]" />
               <span>Book Consultation</span>
@@ -161,7 +170,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 handleNavClick('quote');
                 onOpenCustomQuote();
               }}
-              className="flex items-center gap-2 bg-gradient-to-r from-[#ff5500] to-[#ea580c] hover:from-[#e64d00] hover:to-[#c2410c] text-white font-bold px-5 py-2.5 rounded-xl text-sm transition-all shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]"
+              className="flex items-center gap-2 bg-gradient-to-r from-[#ff5500] to-[#ea580c] hover:from-[#e64d00] hover:to-[#c2410c] text-white font-bold px-4 py-2 rounded-xl text-sm transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 whitespace-nowrap shrink-0"
             >
               <FileText className="w-4 h-4" />
               <span>Get Custom Quote</span>
@@ -172,16 +181,18 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div className="flex lg:hidden items-center gap-2">
             <button
               onClick={onOpenExpressBooking}
-              className="bg-orange-500 text-white p-2 rounded-lg text-xs font-semibold sm:hidden"
+              className="bg-gradient-to-r from-orange-500 to-amber-500 text-white p-2 rounded-lg text-xs font-semibold sm:hidden"
               title="Book Consultation"
+              aria-label="Book Consultation"
             >
               <Calendar className="w-4 h-4" />
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2.5 text-slate-700 hover:text-blue-900 rounded-lg bg-slate-100 hover:bg-slate-200"
+              className="p-2.5 text-slate-700 hover:text-blue-900 rounded-lg bg-slate-100 hover:bg-slate-200 transition-colors"
+              aria-label="Toggle Menu"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
@@ -189,7 +200,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 shadow-xl animate-in slide-in-from-top-2">
+        <div className="lg:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 shadow-xl">
           <div className="flex flex-col gap-1.5 mb-4">
             {navItems.map((item) => (
               <button
@@ -197,7 +208,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onClick={() => handleNavClick(item.id)}
                 className={`text-left px-4 py-3 rounded-lg font-semibold text-sm transition-colors ${
                   currentView === item.id
-                    ? 'bg-blue-900 text-white'
+                    ? 'bg-blue-950 text-white'
                     : 'text-slate-800 hover:bg-slate-100'
                 }`}
               >
@@ -205,7 +216,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               </button>
             ))}
 
-            {/* Legal Links in Mobile Drawer */}
             <div className="pt-2 border-t border-slate-100 flex flex-col gap-1">
               <button
                 onClick={() => handleNavClick('privacy')}
@@ -240,7 +250,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 handleNavClick('quote');
                 onOpenCustomQuote();
               }}
-              className="w-full flex items-center justify-center gap-2 bg-orange-500 text-white font-bold py-3 rounded-xl shadow text-sm"
+              className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-[#ff5500] to-amber-500 text-white font-bold py-3 rounded-xl shadow text-sm"
             >
               <FileText className="w-4 h-4" />
               <span>Request Custom Corporate Quote</span>

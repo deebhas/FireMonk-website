@@ -24,8 +24,9 @@ export const Footer: React.FC<FooterProps> = ({
   onOpenStaffPortal
 }) => {
   return (
-    <footer className="bg-slate-950 text-slate-300 border-t border-slate-800 pt-16 pb-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer className="relative bg-[#050a18] text-slate-300 border-t border-slate-800 pt-16 pb-12 overflow-hidden">
+      <div className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-[#0060df] via-[#ff5500] to-amber-400 opacity-80" />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Main Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-slate-800">
