@@ -1,4 +1,4 @@
-export type ServiceType = 'Consulting' | 'Auditing' | 'Training' | 'Training Only' | 'Digital Transformation';
+export type ServiceType = 'Consulting' | 'Auditing' | 'Training' | 'Training Only';
 
 export type StandardCategory = 
   | 'Core ISO'
@@ -58,8 +58,9 @@ export interface LeadSubmission {
   comments?: string;
   bookingDate?: string;
   bookingTimeSlot?: string;
+  consultationFocus?: string;
   consultationType?: string;
-  status: 'New' | 'In Review' | 'Proposal Sent' | 'Scheduled' | 'Completed';
+  status: 'New' | 'Scheduled' | 'Proposal Sent' | 'Completed';
 }
 
 export interface ConsultationSlot {

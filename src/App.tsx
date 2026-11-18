@@ -3,8 +3,6 @@ import { LeadSubmission } from './types';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { Hero } from './components/Hero';
-import { FireSyncAppBanner } from './components/FireSyncAppBanner';
-import { DigitalTransformationSection } from './components/DigitalTransformationSection';
 import { TrustRoadmap } from './components/TrustRoadmap';
 import { ReadinessQuiz } from './components/ReadinessQuiz';
 import { QuoteCalculator } from './components/QuoteCalculator';
@@ -17,7 +15,6 @@ import { SeoMetaModal } from './components/SeoMetaModal';
 import { StaffPortalModal } from './components/StaffPortalModal';
 import { PrivacyPolicyView } from './components/PrivacyPolicyView';
 import { TermsOfServiceView } from './components/TermsOfServiceView';
-import { DataDeletionModal } from './components/DataDeletionModal';
 
 export default function App() {
   const [currentView, setCurrentView] = useState<string>('home');
@@ -27,7 +24,6 @@ export default function App() {
   const [isLeadsPortalOpen, setIsLeadsPortalOpen] = useState(false);
   const [isSeoMetaOpen, setIsSeoMetaOpen] = useState(false);
   const [isStaffPortalOpen, setIsStaffPortalOpen] = useState(false);
-  const [isDataDeletionOpen, setIsDataDeletionOpen] = useState(false);
 
   // Prefill parameters for quote engine
   const [prefillStandard, setPrefillStandard] = useState<string>('');
@@ -36,7 +32,7 @@ export default function App() {
   // Local state for lead submissions
   const [submissions, setSubmissions] = useState<LeadSubmission[]>([]);
 
-  // Support direct URL hash navigation for Apple/Google reviewers and deep links
+  // Direct URL hash navigation for deep linking
   useEffect(() => {
     const handleHashCheck = () => {
       const hash = window.location.hash.toLowerCase();
@@ -46,14 +42,15 @@ export default function App() {
       } else if (hash === '#terms-of-service' || hash === '#terms') {
         setCurrentView('terms');
         window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else if (hash === '#firesync' || hash === '#app') {
-        setCurrentView('firesync');
+      } else if (hash === '#standards') {
+        setCurrentView('standards');
         window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else if (hash === '#digital-transformation') {
-        setCurrentView('digital-transformation');
+      } else if (hash === '#industries') {
+        setCurrentView('industries');
         window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else if (hash === '#data-deletion') {
-        setIsDataDeletionOpen(true);
+      } else if (hash === '#roadmap') {
+        setCurrentView('roadmap');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     };
 
@@ -97,7 +94,7 @@ export default function App() {
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900 font-sans selection:bg-amber-400 selection:text-blue-950">
       
-      {/* Main Sticky Header Navigation */}
+      {/* Sticky Global Navigation */}
       <Navbar
         currentView={currentView}
         setCurrentView={setCurrentView}
@@ -112,33 +109,14 @@ export default function App() {
         {/* VIEW 1: HOME PAGE */}
         {currentView === 'home' && (
           <div className="space-y-0 animate-in fade-in duration-300">
-            {/* Hero Section with 4 Pillars & FireSync Announcement */}
+            {/* Hero Section & 3 Core Practice Areas */}
             <Hero
               onOpenExpressBooking={() => setIsExpressBookingOpen(true)}
               onOpenCustomQuote={() => handleOpenCustomQuoteWithStandard()}
               setCurrentView={setCurrentView}
             />
 
-            {/* Official App Preview Coming Soon Section for Apple & Google Play verification */}
-            <FireSyncAppBanner
-              onOpenPrivacy={() => {
-                setCurrentView('privacy');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
-              onOpenDataDeletion={() => setIsDataDeletionOpen(true)}
-            />
-
-            {/* New Service Vertical: Digital Transformation Services */}
-            <DigitalTransformationSection
-              onOpenExpressBooking={() => setIsExpressBookingOpen(true)}
-              onOpenCustomQuote={() => handleOpenCustomQuoteWithStandard()}
-              onViewFireSyncApp={() => {
-                setCurrentView('firesync');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
-            />
-
-            {/* Strategic Trust Roadmap Section */}
+            {/* Strategic 4-Step Trust Roadmap Section */}
             <TrustRoadmap
               onOpenExpressBooking={() => setIsExpressBookingOpen(true)}
               onOpenCustomQuote={() => handleOpenCustomQuoteWithStandard()}
@@ -182,71 +160,59 @@ export default function App() {
           </div>
         )}
 
-        {/* VIEW 2: DIGITAL TRANSFORMATION SERVICES (Dedicated Vertical Page) */}
-        {currentView === 'digital-transformation' && (
+        {/* VIEW 2: STANDARDS DIRECTORY */}
+        {currentView === 'standards' && (
           <div className="animate-in fade-in duration-300">
-            <DigitalTransformationSection
+            <StandardsDirectory
+              onOpenCustomQuote={handleOpenCustomQuoteWithStandard}
               onOpenExpressBooking={() => setIsExpressBookingOpen(true)}
-              onOpenCustomQuote={() => handleOpenCustomQuoteWithStandard()}
-              onViewFireSyncApp={() => {
-                setCurrentView('firesync');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
             />
-
-            <FireSyncAppBanner
-              onOpenPrivacy={() => {
-                setCurrentView('privacy');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
-              onOpenDataDeletion={() => setIsDataDeletionOpen(true)}
-            />
-
-            {/* Custom Proposal Hook */}
-            <div className="py-12 bg-slate-900 border-t border-slate-800 text-center">
-              <div className="max-w-4xl mx-auto px-4 space-y-4">
-                <h3 className="text-2xl font-bold text-white">Ready to Modernize Your Enterprise Management Workflows?</h3>
-                <p className="text-slate-300 text-sm">
-                  Connect with FireMonk LLP's digital systems engineers and IRCA lead auditors for tailored software, mobile apps, and automated compliance architecture.
-                </p>
-                <div className="pt-2 flex justify-center gap-3">
-                  <button
-                    onClick={() => setIsExpressBookingOpen(true)}
-                    className="bg-orange-500 hover:bg-orange-600 text-white font-bold px-6 py-3 rounded-xl text-sm"
-                  >
-                    Schedule Digital Strategy Session
-                  </button>
-                  <button
-                    onClick={() => handleOpenCustomQuoteWithStandard()}
-                    className="bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold px-6 py-3 rounded-xl text-sm border border-slate-700"
-                  >
-                    Request Custom Scope Proposal
-                  </button>
-                </div>
-              </div>
-            </div>
           </div>
         )}
 
-        {/* VIEW 3: FIRESYNC MOBILE APP (Dedicated App Store Preview Page) */}
-        {currentView === 'firesync' && (
+        {/* VIEW 3: INDUSTRY MATRIX */}
+        {currentView === 'industries' && (
           <div className="animate-in fade-in duration-300">
-            <FireSyncAppBanner
-              onOpenPrivacy={() => {
-                setCurrentView('privacy');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
-              onOpenDataDeletion={() => setIsDataDeletionOpen(true)}
+            <IndustryMatrix
+              onOpenCustomQuote={handleOpenCustomQuoteWithIndustry}
+              onOpenExpressBooking={() => setIsExpressBookingOpen(true)}
             />
+          </div>
+        )}
 
-            <DigitalTransformationSection
+        {/* VIEW 4: ROADMAP */}
+        {currentView === 'roadmap' && (
+          <div className="animate-in fade-in duration-300">
+            <TrustRoadmap
               onOpenExpressBooking={() => setIsExpressBookingOpen(true)}
               onOpenCustomQuote={() => handleOpenCustomQuoteWithStandard()}
             />
           </div>
         )}
 
-        {/* VIEW 4: PRIVACY POLICY (Verbatim Legal Page) */}
+        {/* VIEW 5: ESTIMATOR */}
+        {currentView === 'estimator' && (
+          <div className="animate-in fade-in duration-300">
+            <QuoteCalculator
+              onLoadIntoQuoteEngine={handleLoadCalculatorIntoQuote}
+              onOpenExpressBooking={() => setIsExpressBookingOpen(true)}
+            />
+          </div>
+        )}
+
+        {/* VIEW 6: CUSTOM QUOTE & PROPOSAL ENGINE */}
+        {currentView === 'quote' && (
+          <div className="animate-in fade-in duration-300">
+            <CustomQuoteEngine
+              onAddSubmission={handleAddSubmission}
+              prefillStandard={prefillStandard}
+              prefillIndustry={prefillIndustry}
+              onOpenExpressBooking={() => setIsExpressBookingOpen(true)}
+            />
+          </div>
+        )}
+
+        {/* VIEW 7: PRIVACY POLICY */}
         {currentView === 'privacy' && (
           <div className="animate-in fade-in duration-300">
             <PrivacyPolicyView
@@ -258,12 +224,11 @@ export default function App() {
                 setCurrentView('terms');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              onRequestDataDeletion={() => setIsDataDeletionOpen(true)}
             />
           </div>
         )}
 
-        {/* VIEW 5: TERMS OF SERVICE (Verbatim Legal Page) */}
+        {/* VIEW 8: TERMS OF SERVICE */}
         {currentView === 'terms' && (
           <div className="animate-in fade-in duration-300">
             <TermsOfServiceView
@@ -279,73 +244,14 @@ export default function App() {
           </div>
         )}
 
-        {/* VIEW 6: STANDARDS DIRECTORY */}
-        {currentView === 'standards' && (
-          <div className="animate-in fade-in duration-300">
-            <StandardsDirectory
-              onOpenCustomQuote={handleOpenCustomQuoteWithStandard}
-              onOpenExpressBooking={() => setIsExpressBookingOpen(true)}
-            />
-          </div>
-        )}
-
-        {/* VIEW 7: INDUSTRY MATRIX */}
-        {currentView === 'industries' && (
-          <div className="animate-in fade-in duration-300">
-            <IndustryMatrix
-              onOpenCustomQuote={handleOpenCustomQuoteWithIndustry}
-              onOpenExpressBooking={() => setIsExpressBookingOpen(true)}
-            />
-          </div>
-        )}
-
-        {/* VIEW 8: ROADMAP */}
-        {currentView === 'roadmap' && (
-          <div className="animate-in fade-in duration-300">
-            <TrustRoadmap
-              onOpenExpressBooking={() => setIsExpressBookingOpen(true)}
-              onOpenCustomQuote={() => handleOpenCustomQuoteWithStandard()}
-            />
-          </div>
-        )}
-
-        {/* VIEW 9: ESTIMATOR */}
-        {currentView === 'estimator' && (
-          <div className="animate-in fade-in duration-300">
-            <QuoteCalculator
-              onLoadIntoQuoteEngine={handleLoadCalculatorIntoQuote}
-              onOpenExpressBooking={() => setIsExpressBookingOpen(true)}
-            />
-          </div>
-        )}
-
-        {/* VIEW 10: CUSTOM QUOTE & PROPOSAL ENGINE */}
-        {currentView === 'quote' && (
-          <div className="animate-in fade-in duration-300">
-            <CustomQuoteEngine
-              onAddSubmission={handleAddSubmission}
-              prefillStandard={prefillStandard}
-              prefillIndustry={prefillIndustry}
-              onOpenExpressBooking={() => setIsExpressBookingOpen(true)}
-            />
-          </div>
-        )}
-
       </main>
 
-      {/* Global Statutory & Compliance Footer */}
+      {/* Global Clean Statutory Footer */}
       <Footer
         setCurrentView={setCurrentView}
         onOpenExpressBooking={() => setIsExpressBookingOpen(true)}
         onOpenCustomQuote={() => handleOpenCustomQuoteWithStandard()}
         onOpenStaffPortal={() => setIsStaffPortalOpen(true)}
-        onRequestDataDeletion={() => setIsDataDeletionOpen(true)}
-      />
-
-      {/* User Data Deletion Modal (Google Play & Apple App Store verification) */}
-      <DataDeletionModal
-        isOpen={isDataDeletionOpen}
-        onClose={() => setIsDataDeletionOpen(false)}
       />
 
       {/* Action Pathway A: Express Booking Modal */}

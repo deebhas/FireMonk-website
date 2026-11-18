@@ -1,33 +1,25 @@
 import React from 'react';
-import { 
-  ShieldCheck, 
-  ArrowLeft, 
-  Mail, 
-  MapPin, 
-  Trash2, 
-  Lock, 
-  FileText, 
-  CheckCircle2, 
-  Building2,
-  Calendar,
-  ExternalLink
+import {
+  ShieldCheck,
+  ArrowLeft,
+  Mail,
+  MapPin,
+  Calendar
 } from 'lucide-react';
 
 interface PrivacyPolicyViewProps {
   onBackToHome: () => void;
   onOpenTerms: () => void;
-  onRequestDataDeletion: () => void;
 }
 
 export const PrivacyPolicyView: React.FC<PrivacyPolicyViewProps> = ({
   onBackToHome,
-  onOpenTerms,
-  onRequestDataDeletion
+  onOpenTerms
 }) => {
   return (
-    <div className="bg-slate-900 text-slate-100 min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+    <div className="bg-slate-900 text-slate-100 min-h-screen py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
-        
+
         {/* Navigation Breadcrumb / Back button */}
         <div className="mb-8 flex items-center justify-between flex-wrap gap-4 border-b border-slate-800 pb-4">
           <button
@@ -54,11 +46,15 @@ export const PrivacyPolicyView: React.FC<PrivacyPolicyViewProps> = ({
           <div className="flex items-center gap-3 text-sky-400 mb-3">
             <ShieldCheck className="w-8 h-8 text-sky-400 shrink-0" />
             <div>
-              <span className="text-xs uppercase font-bold tracking-widest text-slate-400">Statutory Legal Documentation</span>
-              <h1 className="text-2xl sm:text-3xl font-black text-white">PRIVACY POLICY</h1>
+              <span className="text-xs uppercase font-bold tracking-widest text-slate-400">
+                Statutory Legal Documentation
+              </span>
+              <h1 className="text-2xl sm:text-3xl font-black text-white">
+                PRIVACY POLICY
+              </h1>
             </div>
           </div>
-          
+
           <div className="flex flex-wrap items-center gap-4 text-xs text-slate-400 pt-2 border-t border-slate-800/80 mt-4">
             <div className="flex items-center gap-1.5 font-medium text-amber-400">
               <Calendar className="w-3.5 h-3.5" />
@@ -67,28 +63,17 @@ export const PrivacyPolicyView: React.FC<PrivacyPolicyViewProps> = ({
             <span>•</span>
             <span className="text-slate-300 font-mono">Entity: FireMonk LLP</span>
             <span>•</span>
-            <span className="text-slate-300">App: FireSync Mobile Application & firemonk.org</span>
-          </div>
-
-          {/* Quick Notice for Apple & Google Play Store Verification */}
-          <div className="mt-5 p-4 bg-sky-950/60 border border-sky-800/60 rounded-xl text-xs text-sky-200 flex items-start gap-3">
-            <Lock className="w-4 h-4 text-sky-400 shrink-0 mt-0.5" />
-            <div>
-              <p className="font-semibold text-white">Application Store Verification Statement</p>
-              <p className="text-slate-300 mt-0.5 leading-relaxed">
-                This document governs data protection for both the website <span className="text-sky-300 font-mono">firemonk.org</span> and the <strong className="text-white">FireSync</strong> mobile application distributed by FireMonk LLP on the Apple App Store and Google Play Store.
-              </p>
-            </div>
+            <span className="text-slate-300">Website: firemonk.org</span>
           </div>
         </div>
 
         {/* Policy Body */}
         <div className="bg-slate-950/80 border border-slate-800 rounded-3xl p-8 lg:p-10 space-y-10 text-slate-200 text-sm leading-relaxed shadow-xl">
-          
+
           {/* Preamble */}
           <section className="space-y-3">
             <p className="text-base text-slate-200 font-medium">
-              FireMonk LLP ("we," "our," or "us") operates the website <span className="text-sky-300 font-mono">firemonk.org</span> and the <strong className="text-white">FireSync</strong> mobile application (the "Service"). This Privacy Policy informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Service and the choices you have associated with that data.
+              FireMonk LLP ("we," "our," or "us") operates the website <span className="text-sky-300 font-mono">firemonk.org</span>. This Privacy Policy informs you of our policies regarding the collection, use, and disclosure of personal data when you engage our management systems consulting, auditing, and training services, and the choices you have associated with that data.
             </p>
           </section>
 
@@ -99,19 +84,19 @@ export const PrivacyPolicyView: React.FC<PrivacyPolicyViewProps> = ({
               <span>Information Collection and Use</span>
             </h2>
             <p className="text-slate-300">
-              We collect several different types of information for various purposes to provide and improve our Service to you.
+              We collect several different types of information for various purposes to provide and improve our consulting, auditing, and corporate training services to you.
             </p>
-            <div className="space-y-3 pl-4 border-l-2 border-sky-800/60">
+            <div className="space-y-4 pl-4 border-l-2 border-sky-500/40">
               <div>
-                <strong className="text-white font-semibold block mb-1">Personal Data:</strong>
+                <strong className="text-white block mb-1">Personal Data:</strong>
                 <p className="text-slate-300">
-                  While using our Service, we may ask you to provide us with certain personally identifiable information that can be used to contact or identify you ("Personal Data"). This may include, but is not limited to: Email address, First name and last name, Phone number, and Usage Data.
+                  While using our website or submitting inquiry proposals, we may ask you to provide us with certain personally identifiable information that can be used to contact or identify you ("Personal Data"). This may include, but is not limited to: Email address, First name and last name, Phone number, Organization name, and Project Scope requirements.
                 </p>
               </div>
-              <div className="pt-2">
-                <strong className="text-white font-semibold block mb-1">Usage Data:</strong>
+              <div>
+                <strong className="text-white block mb-1">Usage Data:</strong>
                 <p className="text-slate-300">
-                  We may collect information on how the Service is accessed and used. This may include your device's Internet Protocol address (IP address), browser type, browser version, the pages of our Service that you visit, the time and date of your visit, and unique device identifiers.
+                  We may collect information on how our website is accessed and used ("Usage Data"). This may include your device's Internet Protocol address (IP address), browser type, browser version, the pages of our site that you visit, the time and date of your visit, and standard diagnostic data.
                 </p>
               </div>
             </div>
@@ -127,11 +112,11 @@ export const PrivacyPolicyView: React.FC<PrivacyPolicyViewProps> = ({
               FireMonk LLP uses the collected data for various purposes:
             </p>
             <ul className="space-y-2 list-disc pl-6 text-slate-300">
-              <li>To provide and maintain our Service.</li>
-              <li>To notify you about changes to our Service.</li>
-              <li>To provide customer support.</li>
-              <li>To gather analysis or valuable information so that we can improve our Service.</li>
-              <li>To monitor the usage of our Service and detect, prevent, and address technical issues.</li>
+              <li>To provide, administer, and maintain our consulting, auditing, and training engagements.</li>
+              <li>To respond to custom proposal requests, quote calculations, and express advisory bookings.</li>
+              <li>To provide corporate client support and notify you about updates to our engagements.</li>
+              <li>To gather analysis or valuable information so that we can improve our service delivery.</li>
+              <li>To monitor website usage and detect, prevent, and address technical issues.</li>
             </ul>
           </section>
 
@@ -139,10 +124,10 @@ export const PrivacyPolicyView: React.FC<PrivacyPolicyViewProps> = ({
           <section className="space-y-4 pt-6 border-t border-slate-800/80">
             <h2 className="text-lg font-bold text-white flex items-center gap-2">
               <span className="text-sky-400">3.</span>
-              <span>Transfer and Disclosure of Data</span>
+              <span>Transfer, Confidentiality & Disclosure of Data</span>
             </h2>
             <p className="text-slate-300">
-              Your information, including Personal Data, may be transferred to—and maintained on—computers located outside of your state, province, country, or other governmental jurisdiction where the data protection laws may differ from those of your jurisdiction. FireMonk LLP will take all steps reasonably necessary to ensure that your data is treated securely. We do not sell your personal data to third parties. We may disclose your personal data only if required to do so by law or in response to valid requests by public authorities.
+              Client audit records, standard operating procedures, non-conformance findings, and organizational data reviewed during consulting or audit simulations are held under strict non-disclosure obligations. FireMonk LLP will take all steps reasonably necessary to ensure that your data is treated securely. We do not sell your personal or organizational data to third parties. We may disclose your personal data only if required to do so by law or in response to valid requests by public authorities.
             </p>
           </section>
 
@@ -157,46 +142,10 @@ export const PrivacyPolicyView: React.FC<PrivacyPolicyViewProps> = ({
             </p>
           </section>
 
-          {/* Section 5 - User Data Deletion Rights */}
-          <section className="space-y-4 pt-6 border-t border-slate-800/80 bg-blue-950/20 -mx-4 sm:-mx-8 p-6 sm:p-8 rounded-2xl border border-blue-900/50">
-            <div className="flex items-center justify-between flex-wrap gap-2">
-              <h2 className="text-lg font-bold text-white flex items-center gap-2">
-                <span className="text-amber-400">5.</span>
-                <span>User Data Deletion Rights</span>
-              </h2>
-              <span className="text-[11px] bg-amber-950/80 text-amber-300 border border-amber-800 px-2.5 py-0.5 rounded font-mono font-bold">
-                Google Play & Apple Requirement
-              </span>
-            </div>
-            
-            <p className="text-slate-200 font-medium">
-              In compliance with Google Play and Apple App Store requirements, users have the right to request the deletion of their accounts and associated personal data at any time. You may request data deletion by contacting us directly at our support email listed below.
-            </p>
-
-            {/* Direct Interactive Action for User Data Deletion */}
-            <div className="pt-2 flex flex-wrap items-center gap-3">
-              <button
-                onClick={onRequestDataDeletion}
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-red-600 to-rose-700 hover:from-red-500 hover:to-rose-600 text-white font-bold px-5 py-2.5 rounded-xl text-xs shadow-md transition-all"
-              >
-                <Trash2 className="w-4 h-4" />
-                <span>Submit Data Deletion Request</span>
-              </button>
-
-              <a
-                href="mailto:support@firemonk.org?subject=User%20Account%20and%20Personal%20Data%20Deletion%20Request"
-                className="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-sky-300 px-4 py-2.5 rounded-xl text-xs border border-slate-700 font-semibold transition-colors"
-              >
-                <Mail className="w-4 h-4" />
-                <span>Email support@firemonk.org</span>
-              </a>
-            </div>
-          </section>
-
-          {/* Section 6 */}
+          {/* Section 5 */}
           <section className="space-y-4 pt-6 border-t border-slate-800/80">
             <h2 className="text-lg font-bold text-white flex items-center gap-2">
-              <span className="text-sky-400">6.</span>
+              <span className="text-sky-400">5.</span>
               <span>Changes to This Privacy Policy</span>
             </h2>
             <p className="text-slate-300">
@@ -204,32 +153,31 @@ export const PrivacyPolicyView: React.FC<PrivacyPolicyViewProps> = ({
             </p>
           </section>
 
-          {/* Section 7 */}
+          {/* Section 6 */}
           <section className="space-y-4 pt-6 border-t border-slate-800/80">
             <h2 className="text-lg font-bold text-white flex items-center gap-2">
-              <span className="text-sky-400">7.</span>
+              <span className="text-sky-400">6.</span>
               <span>Contact Us</span>
             </h2>
             <p className="text-slate-300">
-              If you have any questions about this Privacy Policy or wish to request data deletion, please contact us:
+              If you have any questions about this Privacy Policy or wish to review your submitted inquiries, please contact us:
             </p>
-            <div className="bg-slate-900 rounded-2xl p-5 border border-slate-800 space-y-3">
+            <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-4 text-xs">
               <div className="flex items-center gap-3">
-                <Mail className="w-5 h-5 text-sky-400 shrink-0" />
+                <Mail className="w-4 h-4 text-sky-400 shrink-0" />
                 <div>
-                  <span className="text-xs text-slate-400 block">By email:</span>
-                  <a href="mailto:support@firemonk.org" className="text-sm font-mono text-sky-300 hover:text-amber-400 font-bold underline">
-                    support@firemonk.org
+                  <span className="text-slate-400 block">Official Contact Email:</span>
+                  <a href="mailto:info@firemonk.org" className="text-sky-300 hover:text-sky-200 font-bold underline">
+                    info@firemonk.org
                   </a>
                 </div>
               </div>
 
-              {/* Physical Registered Office Address */}
               <div className="flex items-start gap-3 pt-3 border-t border-slate-800">
-                <MapPin className="w-5 h-5 text-orange-400 shrink-0 mt-0.5" />
+                <MapPin className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
                 <div>
-                  <span className="text-xs text-slate-400 block font-medium">Registered Physical Office Address:</span>
-                  <p className="text-xs text-slate-200 font-mono mt-0.5 leading-relaxed">
+                  <span className="text-slate-400 block font-medium">Registered Physical Office Address:</span>
+                  <p className="text-slate-300 mt-0.5 leading-relaxed">
                     FireMonk LLP<br />
                     4/461, 2ND Floor, Valamkottil Towers,<br />
                     Thrikkakara, Ernakulam 682021, Kerala, India
@@ -241,10 +189,9 @@ export const PrivacyPolicyView: React.FC<PrivacyPolicyViewProps> = ({
 
         </div>
 
-        {/* Bottom Statutory Notice */}
-        <div className="mt-8 text-center text-xs text-slate-500">
-          <p>© 2026 FireMonk LLP. All Rights Reserved.</p>
-          <p className="mt-1">A Limited Liability Partnership registered under the laws of India.</p>
+        {/* Bottom Notice */}
+        <div className="mt-8 text-center text-xs text-slate-400">
+          <p>© {new Date().getFullYear()} FireMonk LLP. All Rights Reserved.</p>
         </div>
 
       </div>

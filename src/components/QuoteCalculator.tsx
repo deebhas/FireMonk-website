@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { 
   Calculator, 
   Clock, 
-  CheckCircle2, 
   FileText, 
   Users, 
   Layers, 
@@ -20,7 +19,7 @@ export const QuoteCalculator: React.FC<QuoteCalculatorProps> = ({
   onLoadIntoQuoteEngine,
   onOpenExpressBooking
 }) => {
-  const [selectedStandards, setSelectedStandards] = useState<string[]>(['ISO 9001:2015']);
+  const [selectedStandards, setSelectedStandards] = useState<string[]>(['ISO 9001:2015 (QMS)']);
   const [employeeSize, setEmployeeSize] = useState<string>('26 - 100 Employees');
   const [serviceScope, setServiceScope] = useState<string>('Full Consulting + Training + Internal Audit');
 
@@ -47,7 +46,6 @@ export const QuoteCalculator: React.FC<QuoteCalculatorProps> = ({
 
   const scopeOptions = [
     'Full Consulting + Training + Internal Audit',
-    'Full Advisory + Digital Transformation & Mobile Workflows',
     'Internal Audit & Mock Assessment Only',
     'Corporate Lead Auditor Training Only',
   ];
@@ -101,7 +99,7 @@ export const QuoteCalculator: React.FC<QuoteCalculatorProps> = ({
           {/* Controls Column (Col 1-7) */}
           <div className="lg:col-span-7 bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-8 space-y-6">
             
-            {/* 1. Target Standards */}
+            {/* 1. Standards */}
             <div className="space-y-2.5">
               <label className="text-xs font-bold uppercase tracking-wider text-blue-950 flex items-center gap-2">
                 <Layers className="w-4 h-4 text-sky-600" />
@@ -129,7 +127,7 @@ export const QuoteCalculator: React.FC<QuoteCalculatorProps> = ({
               </div>
             </div>
 
-            {/* 2. Employee Count */}
+            {/* 2. Headcount */}
             <div className="space-y-2.5">
               <label className="text-xs font-bold uppercase tracking-wider text-blue-950 flex items-center gap-2">
                 <Users className="w-4 h-4 text-sky-600" />
@@ -193,7 +191,12 @@ export const QuoteCalculator: React.FC<QuoteCalculatorProps> = ({
                           Corporate Lead Auditor Training Only
                         </span>
                       )}
-                      {isSelected && <span className="text-amber-400 font-bold text-xs bg-amber-950/80 px-2 py-0.5 rounded border border-amber-800">Selected ✓</span>}
+
+                      {isSelected && (
+                        <span className="text-amber-400 font-bold text-xs bg-amber-950/80 px-2 py-0.5 rounded border border-amber-800">
+                          Selected ✓
+                        </span>
+                      )}
                     </button>
                   );
                 })}
@@ -202,9 +205,8 @@ export const QuoteCalculator: React.FC<QuoteCalculatorProps> = ({
 
           </div>
 
-          {/* Results Summary Column (Col 8-12) */}
+          {/* Output Column (Col 8-12) */}
           <div className="lg:col-span-5 bg-gradient-to-br from-blue-950 to-slate-900 text-white rounded-3xl p-6 sm:p-8 border border-blue-800 shadow-xl space-y-6">
-            
             <div className="flex items-center gap-3 border-b border-blue-800 pb-4">
               <div className="w-10 h-10 rounded-xl bg-orange-500/20 text-orange-400 flex items-center justify-center font-bold">
                 <Calculator className="w-5 h-5" />
@@ -215,9 +217,7 @@ export const QuoteCalculator: React.FC<QuoteCalculatorProps> = ({
               </div>
             </div>
 
-            {/* Dynamic Estimates */}
             <div className="space-y-4">
-              
               <div className="bg-slate-900/90 rounded-2xl p-4 border border-blue-800 flex items-center justify-between">
                 <div>
                   <div className="text-[11px] text-slate-400 font-medium uppercase">Estimated Duration</div>
@@ -249,10 +249,8 @@ export const QuoteCalculator: React.FC<QuoteCalculatorProps> = ({
                   <li>Scope: {serviceScope}</li>
                 </ul>
               </div>
-
             </div>
 
-            {/* Action buttons */}
             <div className="space-y-2 pt-2">
               <button
                 onClick={() => onLoadIntoQuoteEngine(selectedStandards, employeeSize, serviceScope)}
@@ -261,7 +259,6 @@ export const QuoteCalculator: React.FC<QuoteCalculatorProps> = ({
                 <span>Load Choices Into Official Quote Request</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
-
               <button
                 onClick={onOpenExpressBooking}
                 className="w-full text-center text-xs text-sky-300 hover:text-white py-2 underline"
@@ -269,7 +266,6 @@ export const QuoteCalculator: React.FC<QuoteCalculatorProps> = ({
                 Or schedule a 15-minute lead auditor call
               </button>
             </div>
-
           </div>
 
         </div>

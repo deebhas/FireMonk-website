@@ -58,20 +58,21 @@ export const FireMonkLogo: React.FC<FireMonkLogoProps> = ({
           }>
             Fire
           </span>
-          <span className={lightText
-            ? "bg-gradient-to-r from-orange-400 via-amber-400 to-yellow-300 bg-clip-text text-transparent"
+          <span className={lightText 
+            ? "bg-gradient-to-r from-orange-400 via-amber-400 to-yellow-300 bg-clip-text text-transparent" 
             : "bg-gradient-to-r from-[#ff5500] via-[#ea580c] to-[#f59e0b] bg-clip-text text-transparent"
           }>
             Monk
           </span>
         </span>
       </div>
+
       {showTagline && (
         <p className={`font-extrabold tracking-widest uppercase mt-1 flex items-center gap-1 ${taglineSizes[size]}`}>
-          <span className={lightText ? 'text-sky-300' : 'text-[#0060df]'}>CONSULTING</span>
-          <span className={lightText ? 'text-slate-500' : 'text-slate-300'}>|</span>
-          <span className={lightText ? 'text-indigo-200' : 'text-[#1e3a8a]'}>AUDITING</span>
-          <span className={lightText ? 'text-slate-500' : 'text-slate-300'}>|</span>
+          <span className={lightText ? "text-sky-300" : "text-[#0060df]"}>CONSULTING</span>
+          <span className={lightText ? "text-slate-500" : "text-slate-300"}>|</span>
+          <span className={lightText ? "text-indigo-200" : "text-[#1e3a8a]"}>AUDITING</span>
+          <span className={lightText ? "text-slate-500" : "text-slate-300"}>|</span>
           <span className="text-[#ff5500]">TRAINING</span>
         </p>
       )}
